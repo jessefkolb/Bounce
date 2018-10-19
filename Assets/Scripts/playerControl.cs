@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Timers;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,67 +7,144 @@ public class playerControl : MonoBehaviour {
 
     public float moveSpeed;
     public float jumpHeight;
+    public double bounceHeight;
 
-    int bounceCount;
+    public bool bounce;
+    public bool sPress;
 
-	// Use this for initialization
-	void Start () {
-        bounceCount = 0;
-	}
+    public Transform groundCheck;
+    public float groundCheckRadius;
+    public LayerMask whatIsGround;
+    private bool grounded;
 
-	// Update is called once per frame
-	void Update () {
-		
-        if(Input.GetKeyDown (KeyCode.Space))
+    public bool doubleJump;
+    private bool notDoubleJumped;
+
+    public bool airDash;
+    private bool airDashingCurrently;
+    private bool hasAirDashed;
+    public float dashSpeed;
+    private float dashTime;
+    public float startDashTime;
+    private int direction; //right is 1, left is 2
+
+    public bool dashBomb;
+    public bool miniGun;
+        
+    // Use this for initialization
+    void Start ()
+    {
+        bounceHeight = jumpHeight * 1.3;
+        direction = 1;
+
+        doubleJump = true; //testing purposes, changing to false when adding power ups
+        airDash = true;
+        dashTime = startDashTime;
+    }
+
+    void FixedUpdate()
+    {
+        grounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
+    }
+
+    // Update is called once per frame
+    void Update ()
+    {
+        if (grounded)
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(0, jumpHeight); //Jump
+            notDoubleJumped = true;
+            hasAirDashed = false;
         }
-
+		
         if (Input.GetKey(KeyCode.D))
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(moveSpeed, GetComponent<Rigidbody2D>().velocity.y); 
+            GetComponent<Rigidbody2D>().velocity = new Vector2(moveSpeed, GetComponent<Rigidbody2D>().velocity.y);
+            direction = 1;
         }
-
+        
         if (Input.GetKey(KeyCode.A))
         {
             GetComponent<Rigidbody2D>().velocity = new Vector2(-moveSpeed, GetComponent<Rigidbody2D>().velocity.y);
+            direction = 2;
+        }
+
+        if (Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.A))
+        {
+            GetComponent<Rigidbody2D>().velocity = new Vector2(0, GetComponent<Rigidbody2D>().velocity.y);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space) && grounded)
+        {
+            GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, jumpHeight); //Jump
         }
 
         if (Input.GetKeyDown(KeyCode.S))
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(0, -jumpHeight); //Barrels towards the ground to maintain bounce momentum
+            GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, -jumpHeight); //Barrels towards the ground to maintain bounce momentum
+            if (!grounded) sPress = true; 
         }
 
-
-        //This section of code is to avoid jittery bouncing
-
-        if(bounceCount > 2)
+        if(bounce)
         {
-            GetComponent<CircleCollider2D>().enabled = false;
+            GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, (float)bounceHeight);
+            bounce = false;
         }
-        else
+
+        //Power ups
+
+        if (doubleJump) //if the double jump powerup is enabled
         {
-            GetComponent<CircleCollider2D>().enabled = true;
+            if (Input.GetKeyDown(KeyCode.Space) && notDoubleJumped && !grounded) //if press space while in the air and the player has not used their double jump yet
+            {
+                GetComponent<Rigidbody2D>().velocity = new Vector2(0, jumpHeight); //Jump
+                notDoubleJumped = false;
+            }
         }
 
-        if(Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.Space))
+        if(airDash)
         {
-            bounceCount = 0;
+            if (Input.GetKeyDown(KeyCode.X) && !hasAirDashed && !grounded)
+            {
+                airDashingCurrently = true; 
+            }
+
+            if(airDashingCurrently)
+            {
+                hasAirDashed = true;
+
+                if(dashTime > 0)
+                {
+                    dashTime -= Time.deltaTime;
+
+                    if (direction == 1)
+                    {
+                        GetComponent<Rigidbody2D>().gravityScale = 0;
+                        GetComponent<Rigidbody2D>().velocity = new Vector2(dashSpeed, 0);
+                    }
+                    if (direction == 2)
+                    {
+                        GetComponent<Rigidbody2D>().gravityScale = 0;
+                        GetComponent<Rigidbody2D>().velocity = new Vector2(-dashSpeed, 0);
+                    }
+                    if (dashTime <= 0)
+                    {
+                        GetComponent<Rigidbody2D>().gravityScale = 5;
+                        dashTime = startDashTime;
+                        airDashingCurrently = false;
+                        Debug.Log("Entered");
+                    }
+                }            
+            }
+                       
         }
 
-
-        Debug.Log("Bounce count: " + bounceCount);
-        //If collide with ground 3 times, disable bounce until player presses space or S again. Aka, set for loop
-        //with count, disable when count gets to 3, reset count when player bounces off new material or presses S or space
     }
-
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Ground"))
+        if (collision.CompareTag("Ground") && sPress)
         {
-            bounceCount++;
-            Debug.Log("Accessed");
+            bounce = true;
+            sPress = false;
         }
     }
 }
