@@ -11,7 +11,7 @@ public class DashBomb : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        if(currentWall && GetComponent<airDash>().airDashingCurrently)
+        if(currentWall && (GetComponent<airDash>().airDashingCurrently || GetComponent<GroundDash>().dashingCurrently))
         {
             currentWall.SendMessage("DestroyWall");
         }

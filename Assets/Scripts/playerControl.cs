@@ -8,10 +8,13 @@ public class playerControl : MonoBehaviour
 
     public bool turnoff;
     public GameObject wall = null;
+    public GameObject ground = null;
 
     public float moveSpeed;
     public float jumpHeight;
     public double bounceHeight;
+    public double tempBounceHeight;
+    public double trampolineHeight;
     private bool idle;
 
     public bool bounce;
@@ -33,6 +36,8 @@ public class playerControl : MonoBehaviour
     void Start()
     {
         bounceHeight = jumpHeight * 1.3;
+        trampolineHeight = bounceHeight * 2;
+        tempBounceHeight = bounceHeight;
         direction = 1; //Start facing right as the default
         anim = GetComponent<Animator>();
         idle = true;
@@ -40,7 +45,7 @@ public class playerControl : MonoBehaviour
 
     void FixedUpdate()
     {
-        grounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
+        grounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround); //Ground MUST be in "Ground" Layer
     }
 
     // Update is called once per frame
@@ -69,14 +74,15 @@ public class playerControl : MonoBehaviour
             
         }
 
-        if ((Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.A)) && !GetComponent<airDash>().airDashingCurrently)
+        if ((Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.A)) && !GetComponent<airDash>().airDashingCurrently && !GetComponent<GroundDash>().dashingCurrently)
         {
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, GetComponent<Rigidbody2D>().velocity.y);
+            Debug.Log(GetComponent<Rigidbody2D>().velocity);
             idle = true;
            
         }
 
-        if(Input.GetAxis("DPadHorizontal") == 0f && !GetComponent<airDash>().airDashingCurrently && !Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A))
+        if(Input.GetAxis("DPadHorizontal") == 0f && !GetComponent<airDash>().airDashingCurrently && !GetComponent<GroundDash>().dashingCurrently && !Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A))
         {
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, GetComponent<Rigidbody2D>().velocity.y);
             idle = true;
@@ -101,6 +107,7 @@ public class playerControl : MonoBehaviour
             GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, (float)bounceHeight);
             
             bounce = false;
+            bounceHeight = tempBounceHeight;
         }
 
         //BASIC MOVEMENT END
@@ -113,10 +120,30 @@ public class playerControl : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Ground") && sPress)
+        if ((collision.CompareTag("Ground") || (collision.CompareTag("Trampoline"))) && sPress)
         {
             bounce = true;
             sPress = false;
+            
+            if (collision.CompareTag("Trampoline"))
+            {
+                ground = collision.gameObject;
+                ground.SendMessage("SetTrampolineTrue");
+                tempBounceHeight = bounceHeight;
+                bounceHeight = trampolineHeight;
+            }
+        }
+        else if (collision.CompareTag("Trampoline"))
+        {
+            GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, (float)bounceHeight);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Trampoline"))
+        {
+            ground = null;
         }
     }
 }

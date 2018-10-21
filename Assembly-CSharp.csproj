@@ -65,7 +65,9 @@
     <Compile Include="Assets\Scripts\crackedWall.cs" />
     <Compile Include="Assets\Scripts\DashBomb.cs" />
     <Compile Include="Assets\Scripts\doubleJump.cs" />
+    <Compile Include="Assets\Scripts\GroundDash.cs" />
     <Compile Include="Assets\Scripts\playerControl.cs" />
+    <Compile Include="Assets\Scripts\Trampoline.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/jesse/Documents/Bounce/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>

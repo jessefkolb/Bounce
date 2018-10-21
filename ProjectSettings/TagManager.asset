@@ -7,6 +7,7 @@ TagManager:
   - Ground
   - Wall
   - crackedWall
+  - Trampoline
   layers:
   - Default
   - TransparentFX
