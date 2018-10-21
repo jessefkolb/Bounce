@@ -3,11 +3,16 @@ using System.Timers;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playerControl : MonoBehaviour {
+public class playerControl : MonoBehaviour
+{
+
+    public bool turnoff;
+    public GameObject wall = null;
 
     public float moveSpeed;
     public float jumpHeight;
     public double bounceHeight;
+    private bool idle;
 
     public bool bounce;
     public bool sPress;
@@ -15,31 +20,22 @@ public class playerControl : MonoBehaviour {
     public Transform groundCheck;
     public float groundCheckRadius;
     public LayerMask whatIsGround;
-    private bool grounded;
+    public bool grounded;
 
-    public bool doubleJump;
-    private bool notDoubleJumped;
-
-    public bool airDash;
-    private bool airDashingCurrently;
-    private bool hasAirDashed;
-    public float dashSpeed;
-    private float dashTime;
-    public float startDashTime;
-    private int direction; //right is 1, left is 2
+    public int direction; //right is 1, left is 2
 
     public bool dashBomb;
     public bool miniGun;
-        
+
+    private Animator anim;
+
     // Use this for initialization
-    void Start ()
+    void Start()
     {
         bounceHeight = jumpHeight * 1.3;
-        direction = 1;
-
-        doubleJump = true; //testing purposes, changing to false when adding power ups
-        airDash = true;
-        dashTime = startDashTime;
+        direction = 1; //Start facing right as the default
+        anim = GetComponent<Animator>();
+        idle = true;
     }
 
     void FixedUpdate()
@@ -48,95 +44,58 @@ public class playerControl : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update ()
+    void Update()
     {
-        if (grounded)
+        if (turnoff && wall)
         {
-            notDoubleJumped = true;
-            hasAirDashed = false;
+            wall.SendMessage("destroyWall");
         }
-		
-        if (Input.GetKey(KeyCode.D))
+
+        //BASIC MOVEMENT BEGIN
+
+        if (Input.GetKey(KeyCode.D) || Input.GetAxis("DPadHorizontal") > 0f)
         {
             GetComponent<Rigidbody2D>().velocity = new Vector2(moveSpeed, GetComponent<Rigidbody2D>().velocity.y);
             direction = 1;
+            idle = false;
         }
-        
-        if (Input.GetKey(KeyCode.A))
+
+        if (Input.GetKey(KeyCode.A) || Input.GetAxis("DPadHorizontal") < 0f)
         {
             GetComponent<Rigidbody2D>().velocity = new Vector2(-moveSpeed, GetComponent<Rigidbody2D>().velocity.y);
             direction = 2;
+            idle = false;
         }
 
-        if (Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.A))
+        if (Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.A) || Input.GetAxis("DPadHorizontal") == 0f)
         {
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, GetComponent<Rigidbody2D>().velocity.y);
+            idle = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && grounded)
+        if (Input.GetButtonDown("Jump") && grounded)
         {
             GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, jumpHeight); //Jump
         }
 
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetButtonDown("Bounce"))
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, -jumpHeight); //Barrels towards the ground to maintain bounce momentum
-            if (!grounded) sPress = true; 
+            GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, -30); //Barrels towards the ground to maintain bounce momentum
+            if (!grounded) sPress = true;
         }
 
-        if(bounce)
+        if (bounce)
         {
             GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, (float)bounceHeight);
             bounce = false;
         }
 
-        //Power ups
+        //BASIC MOVEMENT END
 
-        if (doubleJump) //if the double jump powerup is enabled
-        {
-            if (Input.GetKeyDown(KeyCode.Space) && notDoubleJumped && !grounded) //if press space while in the air and the player has not used their double jump yet
-            {
-                GetComponent<Rigidbody2D>().velocity = new Vector2(0, jumpHeight); //Jump
-                notDoubleJumped = false;
-            }
-        }
-
-        if(airDash)
-        {
-            if (Input.GetKeyDown(KeyCode.X) && !hasAirDashed && !grounded)
-            {
-                airDashingCurrently = true; 
-            }
-
-            if(airDashingCurrently)
-            {
-                hasAirDashed = true;
-
-                if(dashTime > 0)
-                {
-                    dashTime -= Time.deltaTime;
-
-                    if (direction == 1)
-                    {
-                        GetComponent<Rigidbody2D>().gravityScale = 0;
-                        GetComponent<Rigidbody2D>().velocity = new Vector2(dashSpeed, 0);
-                    }
-                    if (direction == 2)
-                    {
-                        GetComponent<Rigidbody2D>().gravityScale = 0;
-                        GetComponent<Rigidbody2D>().velocity = new Vector2(-dashSpeed, 0);
-                    }
-                    if (dashTime <= 0)
-                    {
-                        GetComponent<Rigidbody2D>().gravityScale = 5;
-                        dashTime = startDashTime;
-                        airDashingCurrently = false;
-                        Debug.Log("Entered");
-                    }
-                }            
-            }
-                       
-        }
+        anim.SetFloat("Speed", GetComponent<Rigidbody2D>().velocity.x);
+        anim.SetBool("Grounded", grounded);
+        anim.SetInteger("Direction", direction);
+        anim.SetBool("Idle", idle);
 
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -146,5 +105,11 @@ public class playerControl : MonoBehaviour {
             bounce = true;
             sPress = false;
         }
+
+        if (collision.CompareTag("crackedWall"))
+        {
+            wall = collision.gameObject;
+        }
+
     }
 }
