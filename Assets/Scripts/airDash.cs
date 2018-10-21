@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class airDash : MonoBehaviour {
 
-    private bool airDashingCurrently;
+    public bool airDashingCurrently;
     private bool hasAirDashed;
     public float dashSpeed;
     private float dashTime;
@@ -41,6 +41,7 @@ public class airDash : MonoBehaviour {
                 {
                     GetComponent<Rigidbody2D>().gravityScale = 0;
                     GetComponent<Rigidbody2D>().velocity = new Vector2(dashSpeed, 0);
+                    Debug.Log("Dash speed: " + dashSpeed + ", Current speed: " + GetComponent<Rigidbody2D>().velocity.x);
                 }
                 if (GetComponent<playerControl>().direction == 2)
                 {
