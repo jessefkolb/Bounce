@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\airDash.cs" />
     <Compile Include="Assets\Scripts\crackedWall.cs" />
+    <Compile Include="Assets\Scripts\DashBomb.cs" />
     <Compile Include="Assets\Scripts\doubleJump.cs" />
     <Compile Include="Assets\Scripts\playerControl.cs" />
     <Reference Include="UnityEditor.StandardEvents">
