@@ -2566,6 +2566,12 @@ Prefab:
       propertyPath: m_Name
       value: Air Dash Power Up
       objectReference: {fileID: 0}
+    - target: {fileID: 212010381272334670, guid: 2d42aa962e3f88048948db4ea1eb9f3b,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300010, guid: 6b9bffd51cdeada439848e18b771dcca,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d42aa962e3f88048948db4ea1eb9f3b, type: 2}
   m_IsPrefabAsset: 0
@@ -12500,6 +12506,12 @@ Prefab:
       propertyPath: m_Name
       value: Dash Bomb Power Up
       objectReference: {fileID: 0}
+    - target: {fileID: 212850527650690672, guid: bd17714b4bc46e942bbd6db751a1117b,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300010, guid: 6b9bffd51cdeada439848e18b771dcca,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd17714b4bc46e942bbd6db751a1117b, type: 2}
   m_IsPrefabAsset: 0
@@ -20838,6 +20850,12 @@ Prefab:
       propertyPath: m_Name
       value: Double Jump Power Up
       objectReference: {fileID: 0}
+    - target: {fileID: 212679712737592336, guid: 042a1136804614144870a5b35a12977e,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300010, guid: 6b9bffd51cdeada439848e18b771dcca,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 042a1136804614144870a5b35a12977e, type: 2}
   m_IsPrefabAsset: 0
@@ -75846,6 +75864,11 @@ Prefab:
         type: 2}
       propertyPath: m_IsTrigger
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 61207886242309276, guid: 887e252a5396b8c45a1bc4a91e771511,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 68407314705739074, guid: 887e252a5396b8c45a1bc4a91e771511, type: 2}
