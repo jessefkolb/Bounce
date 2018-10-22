@@ -66,6 +66,7 @@
     <Compile Include="Assets\Scripts\DashBomb.cs" />
     <Compile Include="Assets\Scripts\doubleJump.cs" />
     <Compile Include="Assets\Scripts\GroundDash.cs" />
+    <Compile Include="Assets\Scripts\mainMenu.cs" />
     <Compile Include="Assets\Scripts\playerControl.cs" />
     <Compile Include="Assets\Scripts\Trampoline.cs" />
     <Reference Include="UnityEditor.StandardEvents">
