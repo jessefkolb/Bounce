@@ -87,7 +87,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1807576262181358}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.22, y: -1.58, z: -10}
+  m_LocalPosition: {x: 5, y: 1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4851670133377334}
@@ -100,7 +100,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1313288447921250}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.22, y: 1.58, z: 0}
+  m_LocalPosition: {x: -14.813374, y: -2.043751, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4103725346766824}
@@ -117,7 +117,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.24528301, g: 0.24528301, b: 0.24528301, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
@@ -236,9 +236,9 @@ MonoBehaviour:
   ground: {fileID: 0}
   moveSpeed: 10
   jumpHeight: 15
-  bounceHeight: 0
-  tempBounceHeight: 0
-  trampolineHeight: 0
+  bounceHeight: 19.5
+  tempBounceHeight: 19.5
+  trampolineHeight: 39
   bounce: 0
   sPress: 0
   groundCheck: {fileID: 4103725346766824}
@@ -246,8 +246,8 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
-  grounded: 0
-  direction: 0
+  grounded: 1
+  direction: 1
   dashBomb: 0
   miniGun: 0
 --- !u!114 &114329042854747960

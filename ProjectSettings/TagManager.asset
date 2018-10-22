@@ -8,6 +8,10 @@ TagManager:
   - Wall
   - crackedWall
   - Trampoline
+  - DoubleJumpPowerUp
+  - AirDashPowerUp
+  - DashBombPowerUp
+  - MiniGunPowerUp
   layers:
   - Default
   - TransparentFX
