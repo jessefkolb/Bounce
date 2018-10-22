@@ -5,14 +5,12 @@ using UnityEngine;
 public class crackedWall : MonoBehaviour {
 
     public bool explode;
-    private float disappear;
     private Animator anim;
 
     void Start()
     {
         explode = false;
         anim = GetComponent<Animator>();
-        disappear = 3000;
     }
 
     private void Update()

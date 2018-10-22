@@ -22,13 +22,13 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: Circle
-    descriptiveName: Circle
+    m_Name: Interact
+    descriptiveName: Circle on PS3, Z on keyboard
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: joystick button 1
     altNegativeButton: 
-    altPositiveButton: 
+    altPositiveButton: z
     gravity: 0
     dead: 0
     sensitivity: 0

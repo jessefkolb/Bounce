@@ -9,6 +9,7 @@ public class playerControl : MonoBehaviour
     public bool turnoff;
     public GameObject wall = null;
     public GameObject ground = null;
+    public GameObject powerUp = null;
 
     public float moveSpeed;
     public float jumpHeight;
@@ -77,7 +78,6 @@ public class playerControl : MonoBehaviour
         if ((Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.A)) && !GetComponent<airDash>().airDashingCurrently && !GetComponent<GroundDash>().dashingCurrently)
         {
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, GetComponent<Rigidbody2D>().velocity.y);
-            Debug.Log(GetComponent<Rigidbody2D>().velocity);
             idle = true;
            
         }
@@ -136,6 +136,19 @@ public class playerControl : MonoBehaviour
         else if (collision.CompareTag("Trampoline"))
         {
             GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, (float)bounceHeight);
+        }
+
+        if(collision.CompareTag("DoubleJumpPowerUp") || collision.CompareTag("AirDashPowerUp") || collision.CompareTag("DashBombPowerUp") || collision.CompareTag("MiniGunPowerUp"))
+        {
+            powerUp = collision.gameObject;
+            powerUp.SendMessage("PowerUpAttained");
+            Debug.Log("Message sent: PowerUpAttained");
+            powerUp = null;
+
+            if(collision.CompareTag("DoubleJumpPowerUp")) GetComponent<doubleJump>().enabled = true;
+            else if(collision.CompareTag("AirDashPowerUp")) GetComponent<airDash>().enabled = true;
+            else if (collision.CompareTag("DashBombPowerUp")) GetComponent<DashBomb>().enabled = true;
+            //else if (collision.CompareTag("DashBombPowerUp")) GetComponent<doubleJump>().enabled = true;
         }
     }
 
