@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class playerControl : MonoBehaviour
 {
+    public bool onDisappearingPlatform;
+    public GameObject[] disappearingPlatforms1;
+    public GameObject[] disappearingPlatforms2;
+    public GameObject[] disappearingPlatforms3;
 
     public bool turnoff;
     public GameObject wall = null;
@@ -42,6 +46,10 @@ public class playerControl : MonoBehaviour
         direction = 1; //Start facing right as the default
         anim = GetComponent<Animator>();
         idle = true;
+        
+
+        if (disappearingPlatforms2 == null) disappearingPlatforms2 = GameObject.FindGameObjectsWithTag("DisappearingPlatform2");
+        if (disappearingPlatforms3 == null) disappearingPlatforms3 = GameObject.FindGameObjectsWithTag("DisappearingPlatform3");
     }
 
     void FixedUpdate()
@@ -92,7 +100,6 @@ public class playerControl : MonoBehaviour
         if (Input.GetButtonDown("Jump") && grounded)
         {
             GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, jumpHeight); //Jump
-            
         }
 
         if (Input.GetButtonDown("Bounce"))
@@ -100,6 +107,27 @@ public class playerControl : MonoBehaviour
             GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, -30); //Barrels towards the ground to maintain bounce momentum
             
             if (!grounded) sPress = true;
+        }
+
+        if (Input.GetButtonDown("ResetPlatforms") && !onDisappearingPlatform && grounded)
+        {
+            
+            disappearingPlatforms1 = GameObject.FindGameObjectsWithTag("DisappearingPlatform1");
+            disappearingPlatforms2 = GameObject.FindGameObjectsWithTag("DisappearingPlatform2");
+            disappearingPlatforms3 = GameObject.FindGameObjectsWithTag("DisappearingPlatform3");
+
+            foreach (GameObject disappearingPlatform in disappearingPlatforms1)
+            {
+                disappearingPlatform.SendMessage("Reset");
+            }
+            foreach (GameObject disappearingPlatform in disappearingPlatforms2)
+            {
+                disappearingPlatform.SendMessage("Reset");
+            }
+            foreach (GameObject disappearingPlatform in disappearingPlatforms3)
+            {
+                disappearingPlatform.SendMessage("Reset");
+            }
         }
 
         if (bounce)
@@ -120,7 +148,7 @@ public class playerControl : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if ((collision.CompareTag("Ground") || (collision.CompareTag("Trampoline"))) && sPress)
+        if ((collision.CompareTag("Ground") || (collision.CompareTag("Trampoline")) || collision.CompareTag("DisappearingPlatform1") || collision.CompareTag("DisappearingPlatform2") || collision.CompareTag("DisappearingPlatform3")) && sPress)
         {
             bounce = true;
             sPress = false;
@@ -138,7 +166,12 @@ public class playerControl : MonoBehaviour
             GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, (float)bounceHeight);
         }
 
-        if(collision.CompareTag("DoubleJumpPowerUp") || collision.CompareTag("AirDashPowerUp") || collision.CompareTag("DashBombPowerUp") || collision.CompareTag("MiniGunPowerUp"))
+        if (collision.CompareTag("DisappearingPlatform1") || collision.CompareTag("DisappearingPlatform2") || collision.CompareTag("DisappearingPlatform3"))
+        {
+            onDisappearingPlatform = true;
+        }
+
+        if (collision.CompareTag("DoubleJumpPowerUp") || collision.CompareTag("AirDashPowerUp") || collision.CompareTag("DashBombPowerUp") || collision.CompareTag("MiniGunPowerUp"))
         {
             powerUp = collision.gameObject;
             powerUp.SendMessage("PowerUpAttained");
@@ -148,7 +181,6 @@ public class playerControl : MonoBehaviour
             if(collision.CompareTag("DoubleJumpPowerUp")) GetComponent<doubleJump>().enabled = true;
             else if(collision.CompareTag("AirDashPowerUp")) GetComponent<airDash>().enabled = true;
             else if (collision.CompareTag("DashBombPowerUp")) GetComponent<DashBomb>().enabled = true;
-            //else if (collision.CompareTag("DashBombPowerUp")) GetComponent<doubleJump>().enabled = true;
         }
     }
 
@@ -157,6 +189,12 @@ public class playerControl : MonoBehaviour
         if (collision.CompareTag("Trampoline"))
         {
             ground = null;
+        }
+
+        if (collision.CompareTag("DisappearingPlatform1") || collision.CompareTag("DisappearingPlatform2") || collision.CompareTag("DisappearingPlatform3"))
+        {
+            collision.gameObject.SendMessage("Bounce");
+            onDisappearingPlatform = false;
         }
     }
 }

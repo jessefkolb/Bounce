@@ -1,0 +1,13 @@
+PS3 MAPPING:
+
+Cross - 0
+Circle - 1
+Square - 2
+Triangle - 3
+L shoulder - 4
+R shoulder - 5
+Select - 6
+Start - 7
+L analog - 9 positive
+R analog - 10 positive
+

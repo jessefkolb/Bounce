@@ -12,6 +12,9 @@ TagManager:
   - AirDashPowerUp
   - DashBombPowerUp
   - MiniGunPowerUp
+  - DisappearingPlatform1
+  - DisappearingPlatform2
+  - DisappearingPlatform3
   layers:
   - Default
   - TransparentFX

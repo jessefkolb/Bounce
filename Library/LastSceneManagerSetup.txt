@@ -1,8 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: Assets/Scenes/Menu.unity
-=======
 - path: Assets/Scenes/Demo1.unity
->>>>>>> master
   isLoaded: 1
   isActive: 1
