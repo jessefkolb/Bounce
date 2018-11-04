@@ -8,6 +8,7 @@ public class PowerUp : MonoBehaviour {
     bool airDashMenu;
     bool dashBombMenu;
     public GameObject canvas;
+    public GameObject PlayerControl;
 
     void Start()
     {
@@ -26,7 +27,7 @@ public class PowerUp : MonoBehaviour {
             if (Input.GetButtonDown("Interact"))
             {
                 doubleJumpMenu = false;
-                this.gameObject.SetActive(false);
+                transform.localScale = new Vector3(0, 0, 0);
                 Time.timeScale = 1f;
             }
         }
@@ -37,7 +38,7 @@ public class PowerUp : MonoBehaviour {
             if (Input.GetButtonDown("Interact"))
             {
                 airDashMenu = false;
-                this.gameObject.SetActive(false);
+                transform.localScale = new Vector3(0, 0, 0);
                 Time.timeScale = 1f;
             }
         }
@@ -48,7 +49,7 @@ public class PowerUp : MonoBehaviour {
             if (Input.GetButtonDown("Interact"))
             {
                 dashBombMenu = false;
-                this.gameObject.SetActive(false);
+                transform.localScale = new Vector3(0, 0, 0);
                 Time.timeScale = 1f;
             }
         }

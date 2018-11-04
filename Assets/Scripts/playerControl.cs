@@ -35,6 +35,10 @@ public class playerControl : MonoBehaviour
     public bool dashBomb;
     public bool miniGun;
 
+    public bool hasDoubleJump;
+    public bool hasAirDash;
+    public bool hasDashBomb;
+
     private Animator anim;
 
     // Use this for initialization
@@ -46,10 +50,6 @@ public class playerControl : MonoBehaviour
         direction = 1; //Start facing right as the default
         anim = GetComponent<Animator>();
         idle = true;
-        
-
-        if (disappearingPlatforms2 == null) disappearingPlatforms2 = GameObject.FindGameObjectsWithTag("DisappearingPlatform2");
-        if (disappearingPlatforms3 == null) disappearingPlatforms3 = GameObject.FindGameObjectsWithTag("DisappearingPlatform3");
     }
 
     void FixedUpdate()
@@ -178,9 +178,22 @@ public class playerControl : MonoBehaviour
             Debug.Log("Message sent: PowerUpAttained");
             powerUp = null;
 
-            if(collision.CompareTag("DoubleJumpPowerUp")) GetComponent<doubleJump>().enabled = true;
-            else if(collision.CompareTag("AirDashPowerUp")) GetComponent<airDash>().enabled = true;
-            else if (collision.CompareTag("DashBombPowerUp")) GetComponent<DashBomb>().enabled = true;
+            if (collision.CompareTag("DoubleJumpPowerUp"))
+            {
+                GetComponent<doubleJump>().enabled = true;
+                hasDoubleJump = true;
+            }
+            else if (collision.CompareTag("AirDashPowerUp"))
+            {
+                GetComponent<airDash>().enabled = true;
+                hasAirDash = true;
+            }
+            else if (collision.CompareTag("DashBombPowerUp"))
+            {
+                GetComponent<DashBomb>().enabled = true;
+                hasDashBomb = true;
+            }
+            
         }
     }
 

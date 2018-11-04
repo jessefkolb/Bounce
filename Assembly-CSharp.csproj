@@ -61,16 +61,37 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Easy Save 2\ES2Init.cs" />
+    <Compile Include="Assets\Easy Save 2\Examples\Creating an Automatic Save Structure\ES2UniqueID.cs" />
+    <Compile Include="Assets\Easy Save 2\Examples\Creating an Automatic Save Structure\UniqueGameLogic.cs" />
+    <Compile Include="Assets\Easy Save 2\Examples\Creating an Automatic Save Structure\UniqueObjectManager.cs" />
+    <Compile Include="Assets\Easy Save 2\Examples\Creating an Automatic Save Structure\UniqueSaveManager.cs" />
+    <Compile Include="Assets\Easy Save 2\Examples\Save and Load Prefabs Instantiated at Runtime\PrefabManager.cs" />
+    <Compile Include="Assets\Easy Save 2\Examples\Shared Assets\Scripts\MyExampleScript.cs" />
+    <Compile Include="Assets\Easy Save 2\Examples\Upload and Download a Texture\UploadDownloadTexture.cs" />
+    <Compile Include="Assets\Easy Save 2\Types\ES2_AudioClip.cs" />
+    <Compile Include="Assets\Easy Save 2\Types\ES2_GameObject.cs" />
+    <Compile Include="Assets\Easy Save 2\Types\ES2_RawTexture2D.cs" />
+    <Compile Include="Assets\Easy Save 2\Types\ES2_Sprite.cs" />
+    <Compile Include="Assets\Easy Save 2\Types\ES2UserType_UnityEngineCanvasRenderer.cs" />
+    <Compile Include="Assets\Easy Save 2\Types\ES2UserType_UnityEngineLineRenderer.cs" />
+    <Compile Include="Assets\Easy Save 2\Types\ES2UserType_UnityEngineRectTransform.cs" />
+    <Compile Include="Assets\Easy Save 2\Types\ES2UserType_UnityEngineUIText.cs" />
     <Compile Include="Assets\Scripts\airDash.cs" />
     <Compile Include="Assets\Scripts\crackedWall.cs" />
     <Compile Include="Assets\Scripts\DashBomb.cs" />
     <Compile Include="Assets\Scripts\DisappearingPlatform.cs" />
     <Compile Include="Assets\Scripts\doubleJump.cs" />
     <Compile Include="Assets\Scripts\GroundDash.cs" />
+    <Compile Include="Assets\Scripts\LoadGame.cs" />
     <Compile Include="Assets\Scripts\mainMenu.cs" />
     <Compile Include="Assets\Scripts\playerControl.cs" />
     <Compile Include="Assets\Scripts\PowerUp.cs" />
+    <Compile Include="Assets\Scripts\SaveGame.cs" />
     <Compile Include="Assets\Scripts\Trampoline.cs" />
+    <None Include="Assets\Easy Save 2\changelog.txt" />
+    <None Include="Assets\Easy Save 2\readme.txt" />
+    <None Include="Assets\link.xml" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/jesse/Documents/Bounce/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
@@ -314,6 +335,12 @@
     <Reference Include="Boo.Lang">
       <HintPath>C:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/unity/Boo.Lang.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{85AEBA7F-F6D8-068F-42D5-8717C4287427}</Project>
+      <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
