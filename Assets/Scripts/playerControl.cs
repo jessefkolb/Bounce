@@ -2,6 +2,7 @@
 using System.Timers;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class playerControl : MonoBehaviour
 {
@@ -40,6 +41,7 @@ public class playerControl : MonoBehaviour
     public bool hasDashBomb;
 
     private Animator anim;
+    public GameObject saveManagerScript;
 
     // Use this for initialization
     void Start()
@@ -50,6 +52,28 @@ public class playerControl : MonoBehaviour
         direction = 1; //Start facing right as the default
         anim = GetComponent<Animator>();
         idle = true;
+
+        if(ES3.FileExists("SaveData.es3"))
+        {
+            hasDoubleJump = ES3.Load<bool>("hasDoubleJump");
+            hasAirDash = ES3.Load<bool>("hasAirDash");
+            hasDashBomb = ES3.Load<bool>("hasDashBomb");
+        }
+        else
+        {
+            hasDoubleJump = false;
+            hasAirDash = false;
+            hasDashBomb = false;
+        }
+
+        if (hasDoubleJump) GetComponent<doubleJump>().enabled = true;
+        if (hasAirDash) GetComponent<airDash>().enabled = true;
+        if (hasDashBomb) GetComponent<DashBomb>().enabled = true;
+
+        if(ES3.FileExists("LocationData.es3"))
+        {
+            transform.localPosition = ES3.Load<Vector3>("Location", "LocationData.es3");
+        }
     }
 
     void FixedUpdate()
@@ -148,7 +172,8 @@ public class playerControl : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if ((collision.CompareTag("Ground") || (collision.CompareTag("Trampoline")) || collision.CompareTag("DisappearingPlatform1") || collision.CompareTag("DisappearingPlatform2") || collision.CompareTag("DisappearingPlatform3")) && sPress)
+
+        if ((collision.CompareTag("Ground") || (collision.CompareTag("Trampoline")) || collision.CompareTag("DisappearingPlatform1") || collision.CompareTag("DisappearingPlatform2") || collision.CompareTag("DisappearingPlatform3") || collision.CompareTag("SaveSpot")) && sPress)
         {
             bounce = true;
             sPress = false;
@@ -164,6 +189,15 @@ public class playerControl : MonoBehaviour
         else if (collision.CompareTag("Trampoline"))
         {
             GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, (float)bounceHeight);
+        }
+
+        else if (collision.CompareTag("SaveSpot"))
+        {
+            string sceneName = SceneManager.GetActiveScene().name; 
+            Vector3 v = new Vector3(GetComponent<Transform>().position.x, GetComponent<Transform>().position.y, GetComponent<Transform>().position.z);
+            ES3.Save<Vector3>("Location", v, "LocationData.es3");
+            ES3.Save<string>("Scene", sceneName, "LocationData.es3");
+            Debug.Log("Saved " + sceneName);
         }
 
         if (collision.CompareTag("DisappearingPlatform1") || collision.CompareTag("DisappearingPlatform2") || collision.CompareTag("DisappearingPlatform3"))
@@ -182,16 +216,19 @@ public class playerControl : MonoBehaviour
             {
                 GetComponent<doubleJump>().enabled = true;
                 hasDoubleJump = true;
+                Save();
             }
             else if (collision.CompareTag("AirDashPowerUp"))
             {
                 GetComponent<airDash>().enabled = true;
                 hasAirDash = true;
+                Save();
             }
             else if (collision.CompareTag("DashBombPowerUp"))
             {
                 GetComponent<DashBomb>().enabled = true;
                 hasDashBomb = true;
+                Save();
             }
             
         }
@@ -209,5 +246,12 @@ public class playerControl : MonoBehaviour
             collision.gameObject.SendMessage("Bounce");
             onDisappearingPlatform = false;
         }
+    }
+
+    public void Save()
+    {
+        ES3.Save<bool>("hasDoubleJump", hasDoubleJump);
+        ES3.Save<bool>("hasAirDash", hasAirDash);
+        ES3.Save<bool>("hasDashBomb", hasDashBomb);
     }
 }

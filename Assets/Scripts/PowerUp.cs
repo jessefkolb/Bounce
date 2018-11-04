@@ -7,8 +7,13 @@ public class PowerUp : MonoBehaviour {
     bool doubleJumpMenu;
     bool airDashMenu;
     bool dashBombMenu;
+
+    bool hasDoubleJump;
+    bool hasAirDash;
+    bool hasDashBomb;
+
     public GameObject canvas;
-    public GameObject PlayerControl;
+   // public GameObject PlayerControl;
 
     void Start()
     {
@@ -16,6 +21,19 @@ public class PowerUp : MonoBehaviour {
         airDashMenu = false;
         dashBombMenu = false;
         canvas.SetActive(false);
+
+        if (ES3.FileExists("SaveData.es3"))
+        {
+            hasDoubleJump = ES3.Load<bool>("hasDoubleJump");
+            hasAirDash = ES3.Load<bool>("hasAirDash");
+            hasDashBomb = ES3.Load<bool>("hasDashBomb");
+        }
+        else
+        {
+            hasDoubleJump = false;
+            hasAirDash = false;
+            hasDashBomb = false;
+        }
     }
 
     void Update()
@@ -53,6 +71,11 @@ public class PowerUp : MonoBehaviour {
                 Time.timeScale = 1f;
             }
         }
+
+        if (this.gameObject.CompareTag("DoubleJumpPowerUp") && hasDoubleJump) transform.localScale = new Vector3(0, 0, 0);
+        if (this.gameObject.CompareTag("AirDashPowerUp") && hasAirDash) transform.localScale = new Vector3(0, 0, 0);
+        if (this.gameObject.CompareTag("DashBombPowerUp") && hasDashBomb) transform.localScale = new Vector3(0, 0, 0);
+
     }
 
     void PowerUpAttained()
