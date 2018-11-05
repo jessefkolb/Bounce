@@ -20,8 +20,8 @@ public class Enemy_Patrol: MonoBehaviour {
         {
             transform.Translate(Vector2.right * speed * Time.deltaTime);
 
-            RaycastHit2D platformDetect = Physics2D.Raycast(detection.position, Vector2.right, 3);
-            if (platformDetect.collider == false)
+            RaycastHit2D objectDetect = Physics2D.Raycast(detection.position, Vector2.right, .5f);
+            if (objectDetect.collider == true)
             {
                 if (right == true)
                 {
@@ -40,9 +40,8 @@ public class Enemy_Patrol: MonoBehaviour {
             transform.Translate(Vector2.right * speed * Time.deltaTime);
 
             RaycastHit2D platformDetect = Physics2D.Raycast(detection.position, Vector2.down, 2);
-            RaycastHit2D wallDetect = Physics2D.Raycast(detection.position, Vector2.right
-                , 1);
-            if (platformDetect.collider == false)
+            RaycastHit2D objectDetect = Physics2D.Raycast(detection.position, Vector2.right, .5f);
+            if (platformDetect.collider == false || objectDetect == true)
             {
                 if(right == true)
                 {

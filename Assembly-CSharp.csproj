@@ -65,9 +65,14 @@
     <Compile Include="Assets\Scripts\crackedWall.cs" />
     <Compile Include="Assets\Scripts\DashBomb.cs" />
     <Compile Include="Assets\Scripts\doubleJump.cs" />
+    <Compile Include="Assets\Scripts\Enemy_Collision_Damage.cs" />
     <Compile Include="Assets\Scripts\Enemy_Flying_AI.cs" />
+    <Compile Include="Assets\Scripts\Enemy_Gun.cs" />
+    <Compile Include="Assets\Scripts\Enemy_Health.cs" />
     <Compile Include="Assets\Scripts\Enemy_Patrol.cs" />
+    <Compile Include="Assets\Scripts\Enemy_Projectile.cs" />
     <Compile Include="Assets\Scripts\GroundDash.cs" />
+    <Compile Include="Assets\Scripts\Player_Health.cs" />
     <Compile Include="Assets\Scripts\playerControl.cs" />
     <Compile Include="Assets\Scripts\Trampoline.cs" />
     <Reference Include="Unity.2D.Animation.Runtime">
