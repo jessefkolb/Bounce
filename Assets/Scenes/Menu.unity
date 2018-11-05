@@ -517,16 +517,16 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 998329053}
   m_CullTransparentMesh: 0
---- !u!1 &1125456203
+--- !u!1 &1273665319
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1125456204}
-  - component: {fileID: 1125456206}
-  - component: {fileID: 1125456205}
+  - component: {fileID: 1273665320}
+  - component: {fileID: 1273665322}
+  - component: {fileID: 1273665321}
   m_Layer: 5
   m_Name: Image (1)
   m_TagString: Untagged
@@ -534,15 +534,15 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &1125456204
+--- !u!224 &1273665320
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1125456203}
+  m_GameObject: {fileID: 1273665319}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 7.2002, y: 4.189118, z: 1}
+  m_LocalScale: {x: 5.6375, y: 3.2375, z: 1}
   m_Children: []
   m_Father: {fileID: 1787160312}
   m_RootOrder: 0
@@ -550,14 +550,14 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -606, y: -296}
+  m_SizeDelta: {x: -458, y: -214}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1125456205
+--- !u!114 &1273665321
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1125456203}
+  m_GameObject: {fileID: 1273665319}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
@@ -579,12 +579,12 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!222 &1125456206
+--- !u!222 &1273665322
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1125456203}
+  m_GameObject: {fileID: 1273665319}
   m_CullTransparentMesh: 0
 --- !u!1 &1787160308
 GameObject:
@@ -672,7 +672,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 1125456204}
+  - {fileID: 1273665320}
   - {fileID: 2098789261}
   - {fileID: 998329054}
   - {fileID: 2072846603}

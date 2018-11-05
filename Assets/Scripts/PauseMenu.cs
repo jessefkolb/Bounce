@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class PauseMenu : MonoBehaviour {
 
@@ -9,12 +10,14 @@ public class PauseMenu : MonoBehaviour {
     public GameObject pauseMenuCanvas;
     //public GameObject managerScript;
 
+
     private bool hasDoubleJump;
     private bool hasAirDash;
     private bool hasDashBomb;
 
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
 
         if(isPaused)
         {

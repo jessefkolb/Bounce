@@ -16,6 +16,7 @@ TagManager:
   - DisappearingPlatform2
   - DisappearingPlatform3
   - SaveSpot
+  - RotatingPlatform
   layers:
   - Default
   - TransparentFX

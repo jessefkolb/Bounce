@@ -173,7 +173,7 @@ public class playerControl : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if ((collision.CompareTag("Ground") || (collision.CompareTag("Trampoline")) || collision.CompareTag("DisappearingPlatform1") || collision.CompareTag("DisappearingPlatform2") || collision.CompareTag("DisappearingPlatform3") || collision.CompareTag("SaveSpot")) && sPress)
+        if ((collision.CompareTag("Ground") || (collision.CompareTag("Trampoline")) || collision.CompareTag("DisappearingPlatform1") || collision.CompareTag("DisappearingPlatform2") || collision.CompareTag("DisappearingPlatform3") || collision.CompareTag("SaveSpot") || collision.CompareTag("RotatingPlatform")) && sPress)
         {
             bounce = true;
             sPress = false;
