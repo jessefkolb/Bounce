@@ -19,7 +19,7 @@ public class SelectOnInput : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-		if(((Math.Abs(Input.GetAxis("DPadVertical")) > 0) || Input.anyKey) && buttonSelected == false)
+		if(((Math.Abs(Input.GetAxis("DPadVertical")) > 0) || Input.GetButtonDown("Submit") || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S)) && buttonSelected == false)
         {
             buttonSelected = true;
             es.SetSelectedGameObject(selectedObj);
