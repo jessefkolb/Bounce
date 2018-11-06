@@ -17,6 +17,9 @@ TagManager:
   - DisappearingPlatform3
   - SaveSpot
   - RotatingPlatform
+  - wheel1
+  - wheel2
+  - wheel3
   layers:
   - Default
   - TransparentFX
@@ -53,6 +56,9 @@ TagManager:
   m_SortingLayers:
   - name: Background
     uniqueID: 1353818671
+    locked: 0
+  - name: Wheels
+    uniqueID: 1118368781
     locked: 0
   - name: Default
     uniqueID: 0

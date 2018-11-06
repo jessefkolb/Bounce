@@ -14,12 +14,15 @@ public class airDash : MonoBehaviour {
     void Start ()
     {
         dashTime = startDashTime;
+        airDashingCurrently = false;
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-		if(GetComponent<playerControl>().grounded)
+       
+        Debug.Log(airDashingCurrently);
+        if (GetComponent<playerControl>().grounded)
         {
             hasAirDashed = false;
         }

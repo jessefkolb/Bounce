@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 public class PauseMenu : MonoBehaviour {
 
     public bool isPaused;
+    bool timeIsOne;
     public GameObject pauseMenuCanvas;
     //public GameObject managerScript;
 
@@ -15,6 +16,10 @@ public class PauseMenu : MonoBehaviour {
     private bool hasAirDash;
     private bool hasDashBomb;
 
+    private void Start()
+    {
+        timeIsOne = true;
+    }
 
     // Update is called once per frame
     void Update () {
@@ -23,11 +28,16 @@ public class PauseMenu : MonoBehaviour {
         {
             pauseMenuCanvas.SetActive(true);
             Time.timeScale = 0f;
+            timeIsOne = false;
         }
         else
         {
             pauseMenuCanvas.SetActive(false);
-            Time.timeScale = 1f;
+            while(!timeIsOne)
+            {
+                Time.timeScale = 1f;
+                timeIsOne = true;
+            }
         }
         if(Input.GetButtonDown("Pause"))
         {

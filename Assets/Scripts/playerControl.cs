@@ -168,7 +168,8 @@ public class playerControl : MonoBehaviour
         anim.SetInteger("Direction", direction);
         anim.SetBool("Idle", idle);
         anim.SetBool("Bouncing", sPress);
-
+        anim.SetBool("HasDashBomb", hasDashBomb);
+        anim.SetBool("DashBomb", GetComponent<airDash>().airDashingCurrently);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

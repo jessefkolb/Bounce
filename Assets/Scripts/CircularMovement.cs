@@ -5,11 +5,10 @@ using UnityEngine;
 public class CircularMovement : MonoBehaviour {
 
     private float RotateSpeed = 1f;
-    private float Radius = 2;
+    private float Radius = 2f;
 
     private Vector2 _centre;
     private float _angle;
-
 
 
     private void Start()
@@ -19,6 +18,10 @@ public class CircularMovement : MonoBehaviour {
 
     private void Update()
     {
+
+        if (this.gameObject.CompareTag("wheel1")) Radius = (float)1.5f;
+        if (this.gameObject.CompareTag("wheel2")) Radius = (float)1f;
+        if (this.gameObject.CompareTag("wheel3")) Radius = (float).5f;
 
         _angle += RotateSpeed * Time.deltaTime;
 
