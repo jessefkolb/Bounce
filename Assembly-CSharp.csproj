@@ -82,10 +82,22 @@
     <Compile Include="Assets\Scripts\DashBomb.cs" />
     <Compile Include="Assets\Scripts\DisappearingPlatform.cs" />
     <Compile Include="Assets\Scripts\doubleJump.cs" />
+    <Compile Include="Assets\Scripts\Enemy_Astar.cs" />
+    <Compile Include="Assets\Scripts\Enemy_Collision_Damage.cs" />
+    <Compile Include="Assets\Scripts\Enemy_Gun.cs" />
+    <Compile Include="Assets\Scripts\Enemy_Health.cs" />
+    <Compile Include="Assets\Scripts\Enemy_Patrol.cs" />
+    <Compile Include="Assets\Scripts\Enemy_Projectile.cs" />
+    <Compile Include="Assets\Scripts\Grid.cs" />
     <Compile Include="Assets\Scripts\GroundDash.cs" />
+    <Compile Include="Assets\Scripts\Heap.cs" />
     <Compile Include="Assets\Scripts\mainMenu.cs" />
     <Compile Include="Assets\Scripts\ManagerScript.cs" />
+    <Compile Include="Assets\Scripts\Node.cs" />
+    <Compile Include="Assets\Scripts\Pathfinding.cs" />
+    <Compile Include="Assets\Scripts\PathRequestManager.cs" />
     <Compile Include="Assets\Scripts\PauseMenu.cs" />
+    <Compile Include="Assets\Scripts\Player_Health.cs" />
     <Compile Include="Assets\Scripts\playerControl.cs" />
     <Compile Include="Assets\Scripts\PowerUp.cs" />
     <Compile Include="Assets\Scripts\Trampoline.cs" />
@@ -93,16 +105,16 @@
     <None Include="Assets\Easy Save 2\readme.txt" />
     <None Include="Assets\link.xml" />
     <Reference Include="UnityEditor.StandardEvents">
-      <HintPath>C:/Users/jesse/Documents/Bounce/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+      <HintPath>C:/Users/johnp_000/Documents/GitHub/Bounce/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>C:/Users/jesse/Documents/Bounce/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>C:/Users/johnp_000/Documents/GitHub/Bounce/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>C:/Users/jesse/Documents/Bounce/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>C:/Users/johnp_000/Documents/GitHub/Bounce/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/Users/jesse/Documents/Bounce/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>C:/Users/johnp_000/Documents/GitHub/Bounce/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -303,10 +315,10 @@
       <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Analytics">
-      <HintPath>C:/Users/jesse/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/UnityEngine.Analytics.dll</HintPath>
+      <HintPath>C:/Users/johnp_000/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/UnityEngine.Analytics.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.StandardEvents">
-      <HintPath>C:/Users/jesse/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.13/UnityEngine.StandardEvents.dll</HintPath>
+      <HintPath>C:/Users/johnp_000/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.13/UnityEngine.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/unity/mscorlib.dll</HintPath>
