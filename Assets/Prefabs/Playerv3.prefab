@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 114490754984758424}
   - component: {fileID: 114597555472738964}
   - component: {fileID: 114089146456482004}
+  - component: {fileID: 114795648872014822}
   m_Layer: 0
   m_Name: Playerv3
   m_TagString: Player
@@ -100,7 +101,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1313288447921250}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -23.9, y: -47.9, z: 0}
+  m_LocalPosition: {x: -28.3, y: -7.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4103725346766824}
@@ -296,6 +297,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentWall: {fileID: 0}
+--- !u!114 &114795648872014822
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1313288447921250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 913fdfe64cb3c1149baa8b66b420420e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212236154890669992
 SpriteRenderer:
   m_ObjectHideFlags: 1
