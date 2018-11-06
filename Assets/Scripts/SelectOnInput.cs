@@ -19,8 +19,6 @@ public class SelectOnInput : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        Debug.Log(Input.GetAxis("DPadVertical"));
-
 		if(((Math.Abs(Input.GetAxis("DPadVertical")) > 0) || Input.anyKey) && buttonSelected == false)
         {
             buttonSelected = true;

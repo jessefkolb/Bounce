@@ -91,11 +91,13 @@
     <Compile Include="Assets\Scripts\Keys.cs" />
     <Compile Include="Assets\Scripts\mainMenu.cs" />
     <Compile Include="Assets\Scripts\ManagerScript.cs" />
+    <Compile Include="Assets\Scripts\MenuDisplay.cs" />
     <Compile Include="Assets\Scripts\MovingPlatform.cs" />
     <Compile Include="Assets\Scripts\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\playerControl.cs" />
     <Compile Include="Assets\Scripts\PlayerKeys.cs" />
     <Compile Include="Assets\Scripts\PowerUp.cs" />
+    <Compile Include="Assets\Scripts\RotateAroundCenter.cs" />
     <Compile Include="Assets\Scripts\SelectOnInput.cs" />
     <Compile Include="Assets\Scripts\Trampoline.cs" />
     <None Include="Assets\Easy Save 2\changelog.txt" />

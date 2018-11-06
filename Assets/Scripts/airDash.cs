@@ -20,8 +20,6 @@ public class airDash : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-       
-        Debug.Log(airDashingCurrently);
         if (GetComponent<playerControl>().grounded)
         {
             hasAirDashed = false;
@@ -44,7 +42,6 @@ public class airDash : MonoBehaviour {
                 {
                     GetComponent<Rigidbody2D>().gravityScale = 0;
                     GetComponent<Rigidbody2D>().velocity = new Vector2(dashSpeed, 0);
-                    Debug.Log("Dash speed: " + dashSpeed + ", Current speed: " + GetComponent<Rigidbody2D>().velocity.x);
                 }
                 if (GetComponent<playerControl>().direction == 2)
                 {

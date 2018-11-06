@@ -231,7 +231,6 @@ public class playerControl : MonoBehaviour
                 hasDashBomb = true;
                 Save();
             }
-            
         }
     }
 
