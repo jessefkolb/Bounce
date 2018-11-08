@@ -12,7 +12,11 @@ public class door : MonoBehaviour
         if(collision.CompareTag("Player") && Input.GetButtonDown("Interact"))
         {
            if (this.gameObject.CompareTag("door1")) SceneManager.LoadScene("Scene2");
-           if (this.gameObject.CompareTag("door2")) SceneManager.LoadScene("Menu");
+           if (this.gameObject.CompareTag("door2"))
+            {
+                SceneManager.LoadScene("Menu");
+            }
+                
         }
 
     }

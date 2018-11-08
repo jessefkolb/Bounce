@@ -170,6 +170,7 @@ public class playerControl : MonoBehaviour
         anim.SetBool("Bouncing", sPress);
         anim.SetBool("HasDashBomb", hasDashBomb);
         anim.SetBool("DashBomb", GetComponent<airDash>().airDashingCurrently);
+        anim.SetBool("DoubleJumping", GetComponent<doubleJump>().djAnim);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

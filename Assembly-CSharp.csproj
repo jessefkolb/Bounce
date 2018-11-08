@@ -90,6 +90,7 @@
     <Compile Include="Assets\Scripts\door.cs" />
     <Compile Include="Assets\Scripts\doubleJump.cs" />
     <Compile Include="Assets\Scripts\GroundDash.cs" />
+    <Compile Include="Assets\Scripts\Gun.cs" />
     <Compile Include="Assets\Scripts\Keys.cs" />
     <Compile Include="Assets\Scripts\mainMenu.cs" />
     <Compile Include="Assets\Scripts\ManagerScript.cs" />
@@ -99,6 +100,8 @@
     <Compile Include="Assets\Scripts\playerControl.cs" />
     <Compile Include="Assets\Scripts\PlayerKeys.cs" />
     <Compile Include="Assets\Scripts\PowerUp.cs" />
+    <Compile Include="Assets\Scripts\ProjectileLeft.cs" />
+    <Compile Include="Assets\Scripts\ProjectileRight.cs" />
     <Compile Include="Assets\Scripts\RotateAroundCenter.cs" />
     <Compile Include="Assets\Scripts\SelectOnInput.cs" />
     <Compile Include="Assets\Scripts\Trampoline.cs" />
