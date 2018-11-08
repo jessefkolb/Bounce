@@ -79,6 +79,7 @@
     <Compile Include="Assets\Easy Save 2\Types\ES2UserType_UnityEngineUIText.cs" />
     <Compile Include="Assets\Scripts\airDash.cs" />
     <Compile Include="Assets\Scripts\CameraBounds.cs" />
+    <Compile Include="Assets\Scripts\Cameras.cs" />
     <Compile Include="Assets\Scripts\CircularMovement.cs" />
     <Compile Include="Assets\Scripts\CircularMovement2.cs" />
     <Compile Include="Assets\Scripts\CircularMovement3.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="Assets\Scripts\crackedWall.cs" />
     <Compile Include="Assets\Scripts\DashBomb.cs" />
     <Compile Include="Assets\Scripts\DisappearingPlatform.cs" />
+    <Compile Include="Assets\Scripts\door.cs" />
     <Compile Include="Assets\Scripts\doubleJump.cs" />
     <Compile Include="Assets\Scripts\GroundDash.cs" />
     <Compile Include="Assets\Scripts\Keys.cs" />

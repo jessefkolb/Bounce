@@ -21,6 +21,8 @@ TagManager:
   - wheel2
   - wheel3
   - key
+  - door2
+  - door1
   layers:
   - Default
   - TransparentFX

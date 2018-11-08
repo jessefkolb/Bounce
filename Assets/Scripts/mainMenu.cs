@@ -8,6 +8,7 @@ public class mainMenu : MonoBehaviour {
     public string startLevel;
     Scene scene;
     string sceneName;
+    string key = "key";
 
     //figured we might use select level but we can take it out later if not
     public string selectLevel;
@@ -21,6 +22,19 @@ public class mainMenu : MonoBehaviour {
         if(ES3.FileExists("LocationData.es3"))
         {
             ES3.DeleteFile("LocationData.es3");
+        }
+        if(ES3.FileExists("KeyNumber.es3"))
+        {
+            ES3.DeleteFile("KeyNumber.es3");
+        }
+
+        for(int i=0; i<60; i++)
+        {
+            key = "key" + i + ".es3";
+            if (ES3.FileExists(key))
+            {
+                ES3.DeleteFile(key);
+            }
         }
 
         SceneManager.LoadScene("Scene1");
