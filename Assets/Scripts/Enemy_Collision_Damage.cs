@@ -8,13 +8,13 @@ public class Enemy_Collision_Damage : MonoBehaviour {
     public int attack = 1;
     bool canAttack;
     GameObject player;
-    //Player_Health playerHealth;
+    Player_Health playerHealth;
     Enemy_Health enemyHealth;
     // Use this for initialization
     void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-       // playerHealth = player.GetComponent<Player_Health>();
+        playerHealth = player.GetComponent<Player_Health>();
         enemyHealth = GetComponent<Enemy_Health>();
     }
 
@@ -49,12 +49,12 @@ public class Enemy_Collision_Damage : MonoBehaviour {
 
     void doDamage()
     {
-        /*
+        
         if(playerHealth.current_hp > 0 && playerHealth.Can_Take_Damage && canAttack)
         {
             playerHealth.Damage(attack);
         }
-        */
+        
     }
 
 }

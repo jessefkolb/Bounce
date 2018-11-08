@@ -45,7 +45,7 @@ public class Player_Health : MonoBehaviour
 
     void Update()
     {
-        if (!Can_Take_Damage)
+        if (Can_Take_Damage)
         {
             Damage_timer -= Time.deltaTime;
             if(Damage_timer <= 0)
@@ -71,10 +71,7 @@ public class Player_Health : MonoBehaviour
             }
             Can_Take_Damage = false;
         }
-        else
-        {
-            //do nothing
-        }
+        
         
     }
 

@@ -1,105 +1,101 @@
-﻿using System.Collections;
+﻿using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using System;
 
-public class Pathfinding : MonoBehaviour {
+public class Pathfinding : MonoBehaviour
+{
 
-    Grid grid;
     PathRequestManager requestManager;
- 
+    Grid grid;
 
     void Awake()
     {
-        grid = GetComponent<Grid>();
         requestManager = GetComponent<PathRequestManager>();
+        grid = GetComponent<Grid>();
     }
 
-  
 
-    public void StartFindPath(Vector2 startPos, Vector2 targetPos)
+    public void StartFindPath(Vector3 startPos, Vector3 targetPos)
     {
         StartCoroutine(FindPath(startPos, targetPos));
     }
 
-
-    IEnumerator FindPath(Vector2 start, Vector2 target)
+    IEnumerator FindPath(Vector3 startPos, Vector3 targetPos)
     {
-        Vector2[] waypoints = new Vector2[0];
+
+        Vector3[] waypoints = new Vector3[0];
         bool pathSuccess = false;
 
-        Node startNode = grid.NodeFromGridPoint(start);
-        Node targetNode = grid.NodeFromGridPoint(target);
+        Node startNode = grid.NodeFromWorldPoint(startPos);
+        Node targetNode = grid.NodeFromWorldPoint(targetPos);
 
-        if (startNode.obstruction && targetNode.obstruction)
+
+        if (startNode.walkable && targetNode.walkable)
         {
-
             Heap<Node> openSet = new Heap<Node>(grid.MaxSize);
-            HashSet<Node> closeSet = new HashSet<Node>();
-
+            HashSet<Node> closedSet = new HashSet<Node>();
             openSet.Add(startNode);
 
             while (openSet.Count > 0)
             {
-                Node currNode = openSet.RemoveFirst();
-                closeSet.Add(currNode);
+                Node currentNode = openSet.RemoveFirst();
+                closedSet.Add(currentNode);
 
-                if (currNode == targetNode)
+                if (currentNode == targetNode)
                 {
                     pathSuccess = true;
-
-                    yield return null;
+                    break;
                 }
 
-                foreach (Node neighbour in grid.GetNeighbours(currNode))
+                foreach (Node neighbour in grid.GetNeighbours(currentNode))
                 {
-                    if (!neighbour.obstruction || closeSet.Contains(neighbour)) continue;
-
-                    int newMovementCost = currNode.gCost + GetDistance(currNode, neighbour);
-
-                    if (newMovementCost < neighbour.gCost || !openSet.Contains(neighbour))
+                    if (!neighbour.walkable || closedSet.Contains(neighbour))
                     {
-                        neighbour.gCost = newMovementCost;
+                        continue;
+                    }
+
+                    int newMovementCostToNeighbour = currentNode.gCost + GetDistance(currentNode, neighbour);
+                    if (newMovementCostToNeighbour < neighbour.gCost || !openSet.Contains(neighbour))
+                    {
+                        neighbour.gCost = newMovementCostToNeighbour;
                         neighbour.hCost = GetDistance(neighbour, targetNode);
-                        neighbour.parent = currNode;
+                        neighbour.parent = currentNode;
 
                         if (!openSet.Contains(neighbour))
-                        {
                             openSet.Add(neighbour);
-
-                        }
                     }
                 }
-
-
             }
         }
         yield return null;
         if (pathSuccess)
         {
-            waypoints = TracePath(startNode, targetNode);
+            waypoints = RetracePath(startNode, targetNode);
         }
         requestManager.FinishedProcessingPath(waypoints, pathSuccess);
+
     }
-    
-    Vector2[] TracePath(Node startNode, Node endNode)
+
+    Vector3[] RetracePath(Node startNode, Node endNode)
     {
         List<Node> path = new List<Node>();
-        Node currNode = endNode;
+        Node currentNode = endNode;
 
-        while(currNode != startNode)
+        while (currentNode != startNode)
         {
-            path.Add(currNode);
-            currNode = currNode.parent;
+            path.Add(currentNode);
+            currentNode = currentNode.parent;
         }
-        Vector2[] waypoints = SimplifyPath(path);
+        Vector3[] waypoints = SimplifyPath(path);
         Array.Reverse(waypoints);
         return waypoints;
+
     }
 
-    Vector2[] SimplifyPath(List<Node> path)
+    Vector3[] SimplifyPath(List<Node> path)
     {
-        List<Vector2> waypoints = new List<Vector2>();
+        List<Vector3> waypoints = new List<Vector3>();
         Vector2 directionOld = Vector2.zero;
 
         for (int i = 1; i < path.Count; i++)
@@ -116,14 +112,13 @@ public class Pathfinding : MonoBehaviour {
 
     int GetDistance(Node nodeA, Node nodeB)
     {
-        int distX = Mathf.Abs(nodeA.gridX - nodeB.gridX);
-        int distY = Mathf.Abs(nodeA.gridY - nodeB.gridY);
+        int dstX = Mathf.Abs(nodeA.gridX - nodeB.gridX);
+        int dstY = Mathf.Abs(nodeA.gridY - nodeB.gridY);
 
-        if(distX > distY)
-        {
-            return 14 * distY + 10 * (distX - distY);
-        }
-
-        return 14 * distX + 10 * (distY - distX);
+        if (dstX > dstY)
+            return 14 * dstY + 10 * (dstX - dstY);
+        return 14 * dstX + 10 * (dstY - dstX);
     }
+
+
 }
