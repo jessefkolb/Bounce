@@ -68,7 +68,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4103725346766824
 Transform:
   m_ObjectHideFlags: 1
@@ -102,7 +102,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1313288447921250}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -28.79, y: -7.5, z: 0}
+  m_LocalPosition: {x: -24.1, y: -47.84, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4103725346766824}
@@ -272,6 +272,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e747e1e9c57f1764cb237d80a1efaae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasDoubleJumped: 0
+  djAnim: 0
+  t: 0
+  t2: 0
 --- !u!114 &114490754984758424
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -309,7 +313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc793ef71eb23a742a81011f96edee14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
+  Player: {fileID: 1313288447921250}
   MainCamera: {fileID: 1807576262181358}
   Camera1: {fileID: 0}
   Camera2: {fileID: 0}

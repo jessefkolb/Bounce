@@ -40,6 +40,9 @@ public class playerControl : MonoBehaviour
     public bool hasAirDash;
     public bool hasDashBomb;
 
+    string loadscenetemp;
+    string loadscene;
+
     private Animator anim;
     public GameObject saveManagerScript;
 
@@ -70,9 +73,13 @@ public class playerControl : MonoBehaviour
         if (hasAirDash) GetComponent<airDash>().enabled = true;
         if (hasDashBomb) GetComponent<DashBomb>().enabled = true;
 
-        if(ES3.FileExists("LocationData.es3"))
+
+        loadscenetemp = SceneManager.GetActiveScene().name;
+        loadscene = "LocationData_" + loadscenetemp + ".es3";
+
+        if(ES3.FileExists(loadscene))
         {
-            transform.localPosition = ES3.Load<Vector3>("Location", "LocationData.es3");
+            transform.localPosition = ES3.Load<Vector3>("Location", loadscene);
         }
     }
 
@@ -195,9 +202,11 @@ public class playerControl : MonoBehaviour
 
         else if (collision.CompareTag("SaveSpot"))
         {
-            string sceneName = SceneManager.GetActiveScene().name; 
+            string sceneName = SceneManager.GetActiveScene().name;
+            string location = "LocationData_" + sceneName + ".es3";
+
             Vector3 v = new Vector3(GetComponent<Transform>().position.x, GetComponent<Transform>().position.y, GetComponent<Transform>().position.z);
-            ES3.Save<Vector3>("Location", v, "LocationData.es3");
+            ES3.Save<Vector3>("Location", v, location);
             ES3.Save<string>("Scene", sceneName, "LocationData.es3");
             Debug.Log("Saved " + sceneName);
         }
