@@ -44,7 +44,7 @@ public class Cameras : MonoBehaviour {
             FixedCam = Camera1;
             CameraUpdate();
         }
-        else if(playerPositionX > 13)
+        else if(playerPositionX > 11.55)
         {
             TempCam = FixedCam;
             FixedCam = Camera2;
