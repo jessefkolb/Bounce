@@ -8,6 +8,10 @@ public class Cameras : MonoBehaviour {
     public GameObject MainCamera;
     public GameObject Camera1;
     public GameObject Camera2;
+    public GameObject Camera3;
+    public GameObject Camera4;
+    public GameObject Camera5;
+    public GameObject Camera6;
     public bool dynamicCam;
     float playerPositionX;
     float playerPositionY;
@@ -23,6 +27,10 @@ public class Cameras : MonoBehaviour {
 
         Camera1.SetActive(false);
         Camera2.SetActive(false);
+        Camera3.SetActive(false);
+        Camera4.SetActive(false);
+        Camera5.SetActive(false);
+        Camera6.SetActive(false);
         FixedCam.SetActive(false);
     }
 	
@@ -41,13 +49,38 @@ public class Cameras : MonoBehaviour {
         if(playerPositionX < 12)
         {
             TempCam = FixedCam;
-            FixedCam = Camera1;
+
+            if (playerPositionY <= -28)
+            {
+                FixedCam = Camera1;
+            }
+            else if (playerPositionY < -6.5 && playerPositionY > -26.5)
+            {
+                FixedCam = Camera3;
+            }
+            else if (playerPositionY > -6.5)
+            {
+                FixedCam = Camera5;
+            }
+
             CameraUpdate();
         }
         else if(playerPositionX > 11.55)
         {
             TempCam = FixedCam;
-            FixedCam = Camera2;
+            if (playerPositionY <= -28)
+            {
+                FixedCam = Camera2;
+            }
+            else if (playerPositionY < -6.5 && playerPositionY > -26.5)
+            {
+                FixedCam = Camera4;
+            }
+            else if (playerPositionY > -6.5)
+            {
+                FixedCam = Camera6;
+            }
+
             CameraUpdate();
         }
 
