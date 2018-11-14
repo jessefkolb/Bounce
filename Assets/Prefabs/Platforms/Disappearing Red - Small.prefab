@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 61768433865268858}
   - component: {fileID: 61973116491075878}
   - component: {fileID: 114750559636933858}
+  - component: {fileID: 95913087144281532}
   m_Layer: 8
   m_Name: Disappearing Red - Small
   m_TagString: DisappearingPlatform3
@@ -93,6 +94,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 0.6}
   m_EdgeRadius: 0
+--- !u!95 &95913087144281532
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1390423873853542}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 00d9cd53a8cdbe54d96809a92ba0f539, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114750559636933858
 MonoBehaviour:
   m_ObjectHideFlags: 1

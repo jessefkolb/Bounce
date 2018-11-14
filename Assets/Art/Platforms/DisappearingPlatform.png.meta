@@ -5,6 +5,10 @@ TextureImporter:
     21300000: DisappearingPlatform_Green
     21300002: DisappearingPlatform_Yellow
     21300004: DisappearingPlatform_Red
+    21300006: DisappearingPlatform_0
+    21300008: DisappearingPlatform_1
+    21300010: DisappearingPlatform_2
+    21300012: DisappearingPlatform_3
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -87,7 +91,27 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: DisappearingPlatform_Green
+      name: DisappearingPlatform_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 48
+        width: 100
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9ccd74cd54d6664b8f9a9e07af18bab
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DisappearingPlatform_1
       rect:
         serializedVersion: 2
         x: 0
@@ -101,13 +125,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8b57aa43b61fca242ad453e80cdad461
+      spriteID: c4c7203cda63a414bb414c01ae565329
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DisappearingPlatform_Yellow
+      name: DisappearingPlatform_2
       rect:
         serializedVersion: 2
         x: 0
@@ -121,13 +145,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e92ae8debfe98ba428573281095cb172
+      spriteID: ecc622c8ac6e2aa4eb2f08315e76c0c7
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DisappearingPlatform_Red
+      name: DisappearingPlatform_3
       rect:
         serializedVersion: 2
         x: 0
@@ -141,7 +165,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e71cac094125c1e499e496683d741f73
+      spriteID: 7b49e3d1070ff604887fbdba414fe231
       vertices: []
       indices: 
       edges: []

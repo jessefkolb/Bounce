@@ -5,12 +5,14 @@ using UnityEngine;
 public class DisappearingPlatform : MonoBehaviour {
 
     int bounces;
+    private Animator anim;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
     {
         bounces = 0;
-	}
+        anim = GetComponent<Animator>();
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -27,6 +29,8 @@ public class DisappearingPlatform : MonoBehaviour {
         {
             transform.localScale = new Vector3(0, 0, 0);
         }
+        if(this.gameObject.CompareTag("DisappearingPlatform3") || this.gameObject.CompareTag("DisappearingPlatform2")) anim.SetInteger("Bounces", bounces);
+        
     }
 
     void Bounce ()

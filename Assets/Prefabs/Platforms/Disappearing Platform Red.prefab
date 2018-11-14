@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 61237475355340338}
   - component: {fileID: 61863285365341000}
   - component: {fileID: 114630962026560742}
+  - component: {fileID: 95210146973186182}
   m_Layer: 8
   m_Name: Disappearing Platform Red
   m_TagString: DisappearingPlatform3
@@ -37,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1169906000042524}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.36, y: -1.9499998, z: 0}
+  m_LocalPosition: {x: 34.7, y: -9.8, z: -1.6069307}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -93,6 +94,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.9, y: 0.6}
   m_EdgeRadius: 0
+--- !u!95 &95210146973186182
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1169906000042524}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0040fa9b338bb8548bff67bb4fd0e292, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114630962026560742
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -139,7 +158,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300004, guid: aee8c64b337926e4a8f1a0e82d9ce03b, type: 3}
+  m_Sprite: {fileID: 21300010, guid: aee8c64b337926e4a8f1a0e82d9ce03b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
