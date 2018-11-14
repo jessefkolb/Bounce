@@ -46,7 +46,7 @@ public class Cameras : MonoBehaviour {
             CameraUpdate();
         }
 
-        if(playerPositionX < 12)
+        if(playerPositionX < -11)
         {
             TempCam = FixedCam;
 
@@ -65,7 +65,7 @@ public class Cameras : MonoBehaviour {
 
             CameraUpdate();
         }
-        else if(playerPositionX > 11.55)
+        else if(playerPositionX > -11)
         {
             TempCam = FixedCam;
             if (playerPositionY <= -28)
