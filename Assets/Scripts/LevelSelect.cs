@@ -10,6 +10,9 @@ public class LevelSelect : MonoBehaviour {
     public GameObject level2;
     public GameObject level3;
 
+    public GameObject mainCanvas;
+    public GameObject levelCanvas;
+
     private static string room = "ROOM";
     string ROOMinstant;
     string filename;
@@ -64,5 +67,10 @@ public class LevelSelect : MonoBehaviour {
     public void Level7()
     {
 
+    }
+    public void Back()
+    {
+        mainCanvas.SetActive(true);
+        levelCanvas.SetActive(false);
     }
 }
