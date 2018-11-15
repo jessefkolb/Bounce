@@ -23,6 +23,8 @@ TagManager:
   - key
   - door2
   - door1
+  - GunPowerUp
+  - Gun
   layers:
   - Default
   - TransparentFX

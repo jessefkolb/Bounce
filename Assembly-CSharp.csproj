@@ -95,6 +95,7 @@
     <Compile Include="Assets\Scripts\Enemy_Health.cs" />
     <Compile Include="Assets\Scripts\Enemy_Patrol.cs" />
     <Compile Include="Assets\Scripts\Enemy_Projectile.cs" />
+    <Compile Include="Assets\Scripts\FallingPlatform.cs" />
     <Compile Include="Assets\Scripts\Grid.cs" />
     <Compile Include="Assets\Scripts\GroundDash.cs" />
     <Compile Include="Assets\Scripts\Gun.cs" />
@@ -116,6 +117,7 @@
     <Compile Include="Assets\Scripts\ProjectileRight.cs" />
     <Compile Include="Assets\Scripts\RotateAroundCenter.cs" />
     <Compile Include="Assets\Scripts\SelectOnInput.cs" />
+    <Compile Include="Assets\Scripts\Telescope.cs" />
     <Compile Include="Assets\Scripts\TimedPlatform.cs" />
     <Compile Include="Assets\Scripts\Trampoline.cs" />
     <None Include="Assets\Easy Save 2\changelog.txt" />

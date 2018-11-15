@@ -15,6 +15,7 @@ public class playerControl : MonoBehaviour
     public GameObject wall = null;
     public GameObject ground = null;
     public GameObject powerUp = null;
+    public GameObject Gun = null;
 
     public float moveSpeed;
     public float jumpHeight;
@@ -39,6 +40,7 @@ public class playerControl : MonoBehaviour
     public bool hasDoubleJump;
     public bool hasAirDash;
     public bool hasDashBomb;
+    public bool hasGun;
 
     string loadscenetemp;
     string loadscene;
@@ -61,17 +63,22 @@ public class playerControl : MonoBehaviour
             hasDoubleJump = ES3.Load<bool>("hasDoubleJump");
             hasAirDash = ES3.Load<bool>("hasAirDash");
             hasDashBomb = ES3.Load<bool>("hasDashBomb");
+            hasGun = ES3.Load<bool>("hasGun");
         }
         else
         {
             hasDoubleJump = false;
             hasAirDash = false;
             hasDashBomb = false;
+            hasGun = false;
         }
 
         if (hasDoubleJump) GetComponent<doubleJump>().enabled = true;
         if (hasAirDash) GetComponent<airDash>().enabled = true;
         if (hasDashBomb) GetComponent<DashBomb>().enabled = true;
+        if (hasGun) Gun.SetActive(true);
+
+        
 
 
         loadscenetemp = SceneManager.GetActiveScene().name;
@@ -216,7 +223,7 @@ public class playerControl : MonoBehaviour
             onDisappearingPlatform = true;
         }
 
-        if (collision.CompareTag("DoubleJumpPowerUp") || collision.CompareTag("AirDashPowerUp") || collision.CompareTag("DashBombPowerUp") || collision.CompareTag("MiniGunPowerUp"))
+        if (collision.CompareTag("DoubleJumpPowerUp") || collision.CompareTag("AirDashPowerUp") || collision.CompareTag("DashBombPowerUp") || collision.CompareTag("GunPowerUp"))
         {
             powerUp = collision.gameObject;
             powerUp.SendMessage("PowerUpAttained");
@@ -241,6 +248,12 @@ public class playerControl : MonoBehaviour
                 hasDashBomb = true;
                 Save();
             }
+            else if (collision.CompareTag("GunPowerUp"))
+            {
+                Gun.SetActive(true);
+                hasGun = true;
+                Save();
+            }
         }
     }
 
@@ -263,5 +276,6 @@ public class playerControl : MonoBehaviour
         ES3.Save<bool>("hasDoubleJump", hasDoubleJump);
         ES3.Save<bool>("hasAirDash", hasAirDash);
         ES3.Save<bool>("hasDashBomb", hasDashBomb);
+        ES3.Save<bool>("hasGun", hasGun);
     }
 }

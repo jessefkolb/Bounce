@@ -7,16 +7,24 @@ public class Gun : MonoBehaviour {
     public GameObject projectileLeft;
     public GameObject projectileRight;
     public GameObject player;
-	
-	// Update is called once per frame
-	void Update ()
+
+    private Animator anim;
+
+    private void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
+
+    // Update is called once per frame
+    void Update ()
     {
         Quaternion r = player.transform.rotation;
 
         float vx = player.transform.position.x;
-        float vy = (float)(player.transform.position.y + 0.3);
+        float vy = (float)(player.transform.position.y);
         float vz = player.transform.position.z;
 
+        anim.SetInteger("direction", player.GetComponent<playerControl>().direction);
 
         if (Input.GetButtonDown("Shoot"))
         {
