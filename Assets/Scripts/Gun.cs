@@ -30,11 +30,11 @@ public class Gun : MonoBehaviour {
         {
             if (player.GetComponent<playerControl>().direction == 1)
             {
-                Instantiate(projectileRight, new Vector3(vx, vy, vz), r);
+                Instantiate(projectileRight, new Vector3((float)(vx + 0.5), vy, vz), r);
             }
             else
             {
-                Instantiate(projectileLeft, new Vector3(vx, vy, vz), r);
+                Instantiate(projectileLeft, new Vector3((float)(vx - 0.5), vy, vz), r);
             }            
         }
 	}
