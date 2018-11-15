@@ -13,6 +13,15 @@ public class mainMenu : MonoBehaviour {
     //figured we might use select level but we can take it out later if not
     public string selectLevel;
 
+    public GameObject mainCanvas;
+    public GameObject levelCanvas;
+
+    public void Start()
+    {
+        mainCanvas.SetActive(true);
+        levelCanvas.SetActive(false);
+    }
+
     public void newGame()
     {
         if(ES3.FileExists("SaveData.es3"))
@@ -41,7 +50,7 @@ public class mainMenu : MonoBehaviour {
 
     }
 
-    public void levelSelect()
+    public void loadGame()
     {
         if (ES3.FileExists("LocationData.es3"))
         {
@@ -52,7 +61,14 @@ public class mainMenu : MonoBehaviour {
         else SceneManager.LoadScene("Scene1");
     }
 
-    public void quitGame(){
+    public void levelSelect()
+    {
+        levelCanvas.SetActive(true);
+        mainCanvas.SetActive(false);
+    }
+
+    public void quitGame()
+    {
         Application.Quit();
     }
 }
