@@ -9,6 +9,7 @@ public class LevelSelect : MonoBehaviour {
     public GameObject level1;
     public GameObject level2;
     public GameObject level3;
+    public GameObject level4;
 
     public GameObject mainCanvas;
     public GameObject levelCanvas;
@@ -22,7 +23,7 @@ public class LevelSelect : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-        for (int i = 0; i < 12; i++)
+        for (int i = 1; i <= 12; i++)
         {
             ROOMinstant = room + i.ToString();
             filename = ROOMinstant + ".es3";
@@ -33,9 +34,10 @@ public class LevelSelect : MonoBehaviour {
             }
             else
             {
-                if(i == 0) level1.GetComponent<Button>().interactable = false;
-                if(i == 1) level2.GetComponent<Button>().interactable = false;
+                if(i == 1) level1.GetComponent<Button>().interactable = false;
+                if(i == 2) level2.GetComponent<Button>().interactable = false;
                 if(i == 3) level3.GetComponent<Button>().interactable = false;
+                if(i == 4) level4.GetComponent<Button>().interactable = false;
             }
         }
 	}
@@ -54,7 +56,7 @@ public class LevelSelect : MonoBehaviour {
     }
     public void Level4()
     {
-
+        SceneManager.LoadScene("ROOM4");
     }
     public void Level5()
     {

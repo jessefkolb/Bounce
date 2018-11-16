@@ -29,6 +29,7 @@ public class PlayerKeys : MonoBehaviour {
             numOfKeys++;
             ES3.Save<int>("numOfKeys", numOfKeys, "KeyNumber.es3");
             MenuDisplay.AddKeys(numOfKeys);
+            HUD.AddKeys(numOfKeys);
         }
     }
 }

@@ -29,6 +29,12 @@ TagManager:
   - sign
   - sidetoside1
   - sidetoside2
+  - keyMenu
+  - healthMenu1
+  - healthMenu2
+  - spikes
+  - vertical1
+  - vertical2
   layers:
   - Default
   - TransparentFX

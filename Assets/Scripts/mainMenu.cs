@@ -24,29 +24,31 @@ public class mainMenu : MonoBehaviour {
 
     public void newGame()
     {
-        if(ES3.FileExists("SaveData.es3"))
-        {
-            ES3.DeleteFile("SaveData.es3");
-        }
-        if(ES3.FileExists("LocationData.es3"))
-        {
-            ES3.DeleteFile("LocationData.es3");
-        }
-        if(ES3.FileExists("KeyNumber.es3"))
-        {
-            ES3.DeleteFile("KeyNumber.es3");
-        }
+        /* if(ES3.FileExists("SaveData.es3"))
+         {
+             ES3.DeleteFile("SaveData.es3");
+         }
+         if(ES3.FileExists("LocationData.es3"))
+         {
+             ES3.DeleteFile("LocationData.es3");
+         }
+         if(ES3.FileExists("KeyNumber.es3"))
+         {
+             ES3.DeleteFile("KeyNumber.es3");
+         }
 
-        for(int i=0; i<60; i++)
-        {
-            key = "key" + i + ".es3";
-            if (ES3.FileExists(key))
-            {
-                ES3.DeleteFile(key);
-            }
-        }
+         for(int i=0; i<60; i++)
+         {
+             key = "key" + i + ".es3";
+             if (ES3.FileExists(key))
+             {
+                 ES3.DeleteFile(key);
+             }
+         }*/
 
-        SceneManager.LoadScene("Scene1");
+        ES3.DeleteDirectory("");
+
+        SceneManager.LoadScene("ROOM1");
 
     }
 
@@ -58,7 +60,7 @@ public class mainMenu : MonoBehaviour {
             Debug.Log(sceneName);
             SceneManager.LoadScene(sceneName);
         }
-        else SceneManager.LoadScene("Scene1");
+        else SceneManager.LoadScene("ROOM1");
     }
 
     public void levelSelect()

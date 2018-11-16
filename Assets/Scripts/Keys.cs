@@ -7,10 +7,18 @@ public class Keys : MonoBehaviour {
     private static string key = "key";
     string keyInstant;
     string filename;
+    private float xpos;
+    private float ypos;
+    private float zpos;
 
     private void Start()
     {
-        Vector3 v = new Vector3(GetComponent<Transform>().position.x, GetComponent<Transform>().position.y, GetComponent<Transform>().position.z);
+        xpos = GetComponent<Transform>().position.x;
+        ypos = GetComponent<Transform>().position.y;
+        zpos = GetComponent<Transform>().position.z;
+
+
+        Vector3 v = new Vector3(xpos, ypos, zpos);
 
         for (int i=0; i<60; i++)
         {
@@ -32,7 +40,8 @@ public class Keys : MonoBehaviour {
     {
         keyInstant = key + numOfKeys.ToString();
         filename = keyInstant + ".es3";
-        Vector3 v = new Vector3(GetComponent<Transform>().position.x, GetComponent<Transform>().position.y, GetComponent<Transform>().position.z);
+        Debug.Log(xpos);
+        Vector3 v = new Vector3(xpos, ypos, zpos);
         ES3.Save<Vector3>(keyInstant, v, filename);
 
         Debug.Log(keyInstant);

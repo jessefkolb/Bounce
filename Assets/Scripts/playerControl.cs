@@ -71,6 +71,7 @@ public class playerControl : MonoBehaviour
             hasAirDash = false;
             hasDashBomb = false;
             hasGun = false;
+            Gun.SetActive(false);
         }
 
         if (hasDoubleJump) GetComponent<doubleJump>().enabled = true;
@@ -216,6 +217,10 @@ public class playerControl : MonoBehaviour
             ES3.Save<Vector3>("Location", v, location);
             ES3.Save<string>("Scene", sceneName, "LocationData.es3");
             Debug.Log("Saved " + sceneName);
+        }
+        else if(collision.CompareTag("spikes"))
+        {
+            sPress = false;
         }
 
         if (collision.CompareTag("DisappearingPlatform1") || collision.CompareTag("DisappearingPlatform2") || collision.CompareTag("DisappearingPlatform3"))
