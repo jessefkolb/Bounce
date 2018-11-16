@@ -25,6 +25,10 @@ TagManager:
   - door1
   - GunPowerUp
   - Gun
+  - sign1
+  - sign
+  - sidetoside1
+  - sidetoside2
   layers:
   - Default
   - TransparentFX
@@ -70,4 +74,7 @@ TagManager:
     locked: 0
   - name: Front
     uniqueID: 3152112843
+    locked: 0
+  - name: UI
+    uniqueID: 2122309829
     locked: 0

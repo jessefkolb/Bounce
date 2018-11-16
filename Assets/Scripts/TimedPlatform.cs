@@ -7,6 +7,7 @@ public class TimedPlatform : MonoBehaviour {
     float startTime;
     float startTime2;
     bool isActive;
+    bool inTriggerZone;
 
     // Use this for initialization
     void Start ()
@@ -14,6 +15,8 @@ public class TimedPlatform : MonoBehaviour {
         isActive = true;
         startTime = 1;
         startTime2 = 2;
+
+        inTriggerZone = false;
 	}
 	
 	// Update is called once per frame
@@ -36,15 +39,19 @@ public class TimedPlatform : MonoBehaviour {
         if(startTime <= 0)
         {
             isActive = false;
+            inTriggerZone = false;
             startTime = 1;
         }
-	}
 
-    private void OnTriggerStay2D(Collider2D collision)
+        if(inTriggerZone)startTime -= Time.deltaTime;
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Player"))
         {
-            startTime -= Time.deltaTime;
+            inTriggerZone = true;
         }
     }
 
@@ -52,6 +59,7 @@ public class TimedPlatform : MonoBehaviour {
     {
         if (collision.CompareTag("Player"))
         {
+            inTriggerZone = false;
             startTime = 1;
         }
     }

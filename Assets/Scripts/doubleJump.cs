@@ -48,7 +48,6 @@ public class doubleJump : MonoBehaviour {
 
         if(GetComponent<playerControl>().sPress)
         {
-            Debug.Log("h");
             djAnim = false;
         }
 

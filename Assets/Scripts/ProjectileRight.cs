@@ -25,7 +25,4 @@ public class ProjectileRight : MonoBehaviour {
         //Damage Enemy
         Destroy(this.gameObject);
     }
-
-
-
 }
