@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour {
 
-    int totalHP;
-    int currentHP;
+    public int totalHP;
+    public int currentHP;
 
-    float immunityTimer;
-    bool justHit;
+    private float immunityTimer;
+    private bool justHit;
 
     public GameObject HUD;
-
     public GameObject Damage;
+    public GameObject Enemy = null;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
     {
         Damage.SetActive(false);
 
@@ -82,6 +82,25 @@ public class PlayerHealth : MonoBehaviour {
     {
         totalHP++;
         currentHP = totalHP;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+       
+        // Is this a shot?
+        Enemy_Projectile shot = collision.gameObject.GetComponent<Enemy_Projectile>();
+        if (shot != null)
+        {
+            TakeDamage(shot.damage); //inflict damage
+            // Destroy the shot
+            Destroy(shot.gameObject); // Remember to always target the game object, otherwise you will just remove the script
+        }
+
+        if(collision.CompareTag("Enemy") && !GetComponent<playerControl>().sPress)
+        {
+            Debug.Log("???");
+            TakeDamage(1);
+        }
     }
 
 }

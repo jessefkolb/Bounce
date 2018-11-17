@@ -35,6 +35,7 @@ TagManager:
   - spikes
   - vertical1
   - vertical2
+  - Enemy
   layers:
   - Default
   - TransparentFX

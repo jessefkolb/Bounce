@@ -223,6 +223,11 @@ public class playerControl : MonoBehaviour
             sPress = false;
         }
 
+        else if(collision.CompareTag("Enemy"))
+        {
+            bounce = true;
+        }
+
         if (collision.CompareTag("DisappearingPlatform1") || collision.CompareTag("DisappearingPlatform2") || collision.CompareTag("DisappearingPlatform3"))
         {
             onDisappearingPlatform = true;
