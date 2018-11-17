@@ -18,6 +18,7 @@ public class LevelSelect : MonoBehaviour {
     string ROOMinstant;
     string filename;
 
+    Vector3 startingLocation;
     string level;
 
     // Use this for initialization
@@ -44,6 +45,15 @@ public class LevelSelect : MonoBehaviour {
 	
     public void Level1()
     {
+        if(ES3.FileExists("LocationData_ROOM1.es3"))
+        {
+            if(ES3.FileExists("StartingLocation_ROOM1.es3"))
+            {
+                startingLocation = ES3.Load<Vector3>("startingLocation", "StartingLocation_ROOM1.es3");
+                ES3.Save<Vector3>("Location", startingLocation, "LocationData_ROOM1.es3");
+            }
+        }
+
         SceneManager.LoadScene("ROOM1");
     }
     public void Level2()

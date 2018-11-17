@@ -2,19 +2,38 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class GameOver : MonoBehaviour {
 
     bool gameOver;
     public GameObject GOCanvas;
+    public GameObject fadeCanvas;
+    float timer;
 
     // Use this for initialization
+    private void Start()
+    {
+        timer = 2;
+    }
+
     void Update()
     {
         if(gameOver)
         {
+            timer -= (float)0.01;
             GOCanvas.SetActive(true);
+
+            if(timer <= 0)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+
+            if(timer < 1)
+            {
+                if(timer > 0) fadeCanvas.GetComponent<Image>().color = new Color(1, 1, 1, timer);
+            }
         }
     }
 
@@ -24,13 +43,4 @@ public class GameOver : MonoBehaviour {
         Time.timeScale = 0f;
     }
 
-    public void Continue()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
-
-    public void Quit()
-    {
-        SceneManager.LoadScene("Menu");
-    }
 }

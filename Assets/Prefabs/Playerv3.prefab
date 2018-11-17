@@ -61,6 +61,7 @@ GameObject:
   - component: {fileID: 114089146456482004}
   - component: {fileID: 114795648872014822}
   - component: {fileID: 114021487193468688}
+  - component: {fileID: 114129579973881042}
   m_Layer: 0
   m_Name: Playerv3
   m_TagString: Player
@@ -162,7 +163,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1313288447921250}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.63, y: -81.24, z: 0}
+  m_LocalPosition: {x: 12.63, y: -32.89, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4154873571844990}
@@ -356,6 +357,17 @@ MonoBehaviour:
   hasDashBomb: 0
   hasGun: 0
   saveManagerScript: {fileID: 0}
+--- !u!114 &114129579973881042
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1313288447921250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6041ebc5b4958c44287408e0bf26e2c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114329042854747960
 MonoBehaviour:
   m_ObjectHideFlags: 1

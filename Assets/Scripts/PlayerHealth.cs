@@ -57,7 +57,6 @@ public class PlayerHealth : MonoBehaviour {
         {
             //GameOver
             HUD.SendMessage("EndGame");
-            Debug.Log("Game Over");
         }
 
         MenuDisplay.UpdateHealth(currentHP, totalHP);
