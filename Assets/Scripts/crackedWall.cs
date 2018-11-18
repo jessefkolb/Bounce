@@ -24,6 +24,5 @@ public class crackedWall : MonoBehaviour {
         GetComponent<BoxCollider2D>().isTrigger = true;
         //GetComponent<SpriteRenderer>().enabled = false;
         explode = true;
-        Debug.Log(explode);
     }
 }

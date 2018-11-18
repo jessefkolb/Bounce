@@ -58,14 +58,41 @@ public class LevelSelect : MonoBehaviour {
     }
     public void Level2()
     {
+        if (ES3.FileExists("LocationData_ROOM2.es3"))
+        {
+            if (ES3.FileExists("StartingLocation_ROOM2.es3"))
+            {
+                startingLocation = ES3.Load<Vector3>("startingLocation", "StartingLocation_ROOM2.es3");
+                ES3.Save<Vector3>("Location", startingLocation, "LocationData_ROOM2.es3");
+            }
+        }
+
         SceneManager.LoadScene("ROOM2");
     }
     public void Level3()
     {
+        if (ES3.FileExists("LocationData_ROOM3.es3"))
+        {
+            if (ES3.FileExists("StartingLocation_ROOM3.es3"))
+            {
+                startingLocation = ES3.Load<Vector3>("startingLocation", "StartingLocation_ROOM3.es3");
+                ES3.Save<Vector3>("Location", startingLocation, "LocationData_ROOM3.es3");
+            }
+        }
+
         SceneManager.LoadScene("ROOM3");
     }
     public void Level4()
     {
+        if (ES3.FileExists("LocationData_ROOM4.es3"))
+        {
+            if (ES3.FileExists("StartingLocation_ROOM4.es3"))
+            {
+                startingLocation = ES3.Load<Vector3>("startingLocation", "StartingLocation_ROOM4.es3");
+                ES3.Save<Vector3>("Location", startingLocation, "LocationData_ROOM4.es3");
+            }
+        }
+
         SceneManager.LoadScene("ROOM4");
     }
     public void Level5()

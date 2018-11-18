@@ -22,7 +22,7 @@ public class playerControl : MonoBehaviour
     public double bounceHeight;
     public double tempBounceHeight;
     public double trampolineHeight;
-    private bool idle;
+    public bool idle;
 
     public bool bounce;
     public bool sPress;
@@ -42,6 +42,9 @@ public class playerControl : MonoBehaviour
     public bool hasDashBomb;
     public bool hasGun;
 
+    public bool disableInput;
+    public float disableInputTimer;
+
     string loadscenetemp;
     string loadscene;
 
@@ -57,6 +60,8 @@ public class playerControl : MonoBehaviour
         direction = 1; //Start facing right as the default
         anim = GetComponent<Animator>();
         idle = true;
+        disableInput = false;
+        disableInputTimer = (float)0.2;
 
         if(ES3.FileExists("SaveData.es3"))
         {
@@ -78,9 +83,6 @@ public class playerControl : MonoBehaviour
         if (hasAirDash) GetComponent<airDash>().enabled = true;
         if (hasDashBomb) GetComponent<DashBomb>().enabled = true;
         if (hasGun) Gun.SetActive(true);
-
-        
-
 
         loadscenetemp = SceneManager.GetActiveScene().name;
         loadscene = "LocationData_" + loadscenetemp + ".es3";
@@ -106,7 +108,7 @@ public class playerControl : MonoBehaviour
 
         //BASIC MOVEMENT BEGIN
 
-        if ((Input.GetKey(KeyCode.D) || Input.GetAxis("DPadHorizontal") > 0f) && !GetComponent<airDash>().airDashingCurrently)
+        if ((Input.GetKey(KeyCode.D) || Input.GetAxis("DPadHorizontal") > 0f) && !GetComponent<airDash>().airDashingCurrently && !disableInput)
         {
             GetComponent<Rigidbody2D>().velocity = new Vector2(moveSpeed, GetComponent<Rigidbody2D>().velocity.y);
             direction = 1;
@@ -114,7 +116,7 @@ public class playerControl : MonoBehaviour
             
         }
 
-        if ((Input.GetKey(KeyCode.A) || Input.GetAxis("DPadHorizontal") < 0f) && !GetComponent<airDash>().airDashingCurrently)
+        if ((Input.GetKey(KeyCode.A) || Input.GetAxis("DPadHorizontal") < 0f) && !GetComponent<airDash>().airDashingCurrently && !disableInput)
         {
             GetComponent<Rigidbody2D>().velocity = new Vector2(-moveSpeed, GetComponent<Rigidbody2D>().velocity.y);
             direction = 2;
@@ -179,6 +181,17 @@ public class playerControl : MonoBehaviour
 
         //BASIC MOVEMENT END
 
+        if(disableInput)
+        {
+            disableInputTimer -= Time.deltaTime;
+        }
+
+        if(disableInputTimer <= 0)
+        {
+            disableInput = false;
+            disableInputTimer = 1;
+        }
+
         anim.SetBool("Grounded", grounded);
         anim.SetInteger("Direction", direction);
         anim.SetBool("Idle", idle);
@@ -223,7 +236,7 @@ public class playerControl : MonoBehaviour
             sPress = false;
         }
 
-        else if(collision.CompareTag("Enemy"))
+        else if(collision.CompareTag("Enemy") || collision.CompareTag("Boss"))
         {
             bounce = true;
         }
@@ -279,6 +292,11 @@ public class playerControl : MonoBehaviour
             collision.gameObject.SendMessage("Bounce");
             onDisappearingPlatform = false;
         }
+    }
+
+    public void DisableInput()
+    {
+        disableInput = true;
     }
 
     public void Save()

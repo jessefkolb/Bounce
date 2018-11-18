@@ -36,6 +36,9 @@ TagManager:
   - vertical1
   - vertical2
   - Enemy
+  - LeftWall
+  - RightWall
+  - Boss
   layers:
   - Default
   - TransparentFX

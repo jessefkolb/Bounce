@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerKeys : MonoBehaviour {
 
-    int numOfKeys;
+    public int numOfKeys;
 
     void Start()
     {

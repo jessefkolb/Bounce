@@ -96,9 +96,8 @@ public class PlayerHealth : MonoBehaviour {
             Destroy(shot.gameObject); // Remember to always target the game object, otherwise you will just remove the script
         }
 
-        if(collision.CompareTag("Enemy") && !GetComponent<playerControl>().sPress)
+        if((collision.CompareTag("Enemy")) && !GetComponent<playerControl>().sPress)
         {
-            Debug.Log("???");
             TakeDamage(1);
         }
     }
