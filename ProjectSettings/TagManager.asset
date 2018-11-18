@@ -39,6 +39,9 @@ TagManager:
   - LeftWall
   - RightWall
   - Boss
+  - Ice
+  - FanLeft
+  - FanRight
   layers:
   - Default
   - TransparentFX

@@ -42,6 +42,10 @@ public class playerControl : MonoBehaviour
     public bool hasDashBomb;
     public bool hasGun;
 
+    private bool onIce;
+    public bool blow;
+    public bool blowRight;
+
     public bool disableInput;
     public float disableInputTimer;
 
@@ -110,7 +114,12 @@ public class playerControl : MonoBehaviour
 
         if ((Input.GetKey(KeyCode.D) || Input.GetAxis("DPadHorizontal") > 0f) && !GetComponent<airDash>().airDashingCurrently && !disableInput)
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(moveSpeed, GetComponent<Rigidbody2D>().velocity.y);
+            if (blowRight) GetComponent<Rigidbody2D>().velocity = new Vector2(-5, GetComponent<Rigidbody2D>().velocity.y);
+
+            else if(blow) GetComponent<Rigidbody2D>().velocity = new Vector2(moveSpeed + 20, GetComponent<Rigidbody2D>().velocity.y);
+
+            else GetComponent<Rigidbody2D>().velocity = new Vector2(moveSpeed, GetComponent<Rigidbody2D>().velocity.y);
+
             direction = 1;
             idle = false;
             
@@ -118,24 +127,25 @@ public class playerControl : MonoBehaviour
 
         if ((Input.GetKey(KeyCode.A) || Input.GetAxis("DPadHorizontal") < 0f) && !GetComponent<airDash>().airDashingCurrently && !disableInput)
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(-moveSpeed, GetComponent<Rigidbody2D>().velocity.y);
+            if (blow) GetComponent<Rigidbody2D>().velocity = new Vector2(5, GetComponent<Rigidbody2D>().velocity.y);
+
+            else if(blowRight) GetComponent<Rigidbody2D>().velocity = new Vector2(-moveSpeed - 20, GetComponent<Rigidbody2D>().velocity.y);
+
+            else GetComponent<Rigidbody2D>().velocity = new Vector2(-moveSpeed, GetComponent<Rigidbody2D>().velocity.y);
+
             direction = 2;
             idle = false;
             
         }
 
-        if ((Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.A)) && !GetComponent<airDash>().airDashingCurrently && !GetComponent<GroundDash>().dashingCurrently)
+        if ((Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.A)) && !GetComponent<airDash>().airDashingCurrently && !GetComponent<GroundDash>().dashingCurrently && !onIce && !blowRight && !blow)
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(0, GetComponent<Rigidbody2D>().velocity.y);
-            idle = true;
-           
+            GetComponent<Rigidbody2D>().velocity = new Vector2(0, GetComponent<Rigidbody2D>().velocity.y);           
         }
 
-        if(Input.GetAxis("DPadHorizontal") == 0f && !GetComponent<airDash>().airDashingCurrently && !GetComponent<GroundDash>().dashingCurrently && !Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A))
+        if(Input.GetAxis("DPadHorizontal") == 0f && !GetComponent<airDash>().airDashingCurrently && !GetComponent<GroundDash>().dashingCurrently && !Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A) && !onIce && !blowRight && !blow)
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(0, GetComponent<Rigidbody2D>().velocity.y);
-            idle = true;
-            
+            GetComponent<Rigidbody2D>().velocity = new Vector2(0, GetComponent<Rigidbody2D>().velocity.y);            
         }
 
         if (Input.GetButtonDown("Jump") && grounded)
@@ -192,6 +202,20 @@ public class playerControl : MonoBehaviour
             disableInputTimer = 1;
         }
 
+        if (onIce && GetComponent<Rigidbody2D>().velocity.x == 0 && !blow && !blowRight)
+        {
+            if (direction == 1)
+            {
+                GetComponent<Rigidbody2D>().velocity = new Vector2((float)0.8, GetComponent<Rigidbody2D>().velocity.y);
+            }
+            else if (direction == 2)
+            {
+                GetComponent<Rigidbody2D>().velocity = new Vector2((float)-0.8, GetComponent<Rigidbody2D>().velocity.y);
+            }
+        }
+
+        if (GetComponent<Rigidbody2D>().velocity.x == 0 && !blow) idle = true;
+
         anim.SetBool("Grounded", grounded);
         anim.SetInteger("Direction", direction);
         anim.SetBool("Idle", idle);
@@ -203,11 +227,15 @@ public class playerControl : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if ((collision.CompareTag("Ground") || (collision.CompareTag("Trampoline")) || collision.CompareTag("DisappearingPlatform1") || collision.CompareTag("DisappearingPlatform2") || collision.CompareTag("DisappearingPlatform3") || collision.CompareTag("SaveSpot") || collision.CompareTag("RotatingPlatform")) && sPress)
+        if (collision.CompareTag("Ice"))
+        {
+            onIce = true;
+        }
+
+        if ((collision.CompareTag("Ground") || collision.CompareTag("Ice") || (collision.CompareTag("Trampoline")) || collision.CompareTag("DisappearingPlatform1") || collision.CompareTag("DisappearingPlatform2") || collision.CompareTag("DisappearingPlatform3") || collision.CompareTag("SaveSpot") || collision.CompareTag("RotatingPlatform")) && sPress)
         {
             bounce = true;
             sPress = false;
-            
             if (collision.CompareTag("Trampoline"))
             {
                 ground = collision.gameObject;
@@ -282,6 +310,8 @@ public class playerControl : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        if (collision.CompareTag("Ice")) onIce = false;
+
         if (collision.CompareTag("Trampoline"))
         {
             ground = null;
