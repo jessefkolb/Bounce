@@ -13,8 +13,15 @@ public class PositionTracker : MonoBehaviour {
     {
         if(!ES3.FileExists("LocationData_" + SceneManager.GetActiveScene().name + ".es3"))
         {
+            //Saves the coordinates for the level selector
             startingLocation = GetComponent<Transform>().position;
             ES3.Save<Vector3>("startingLocation", startingLocation, "StartingLocation_" + SceneManager.GetActiveScene().name + ".es3");
+
+            //Saves the coordinates for the campaign
+            ES3.Save<Vector3>("Location", startingLocation, "LocationData_" + SceneManager.GetActiveScene().name + ".es3");
+            ES3.Save<string>("Scene", SceneManager.GetActiveScene().name, "LocationData.es3");
+            Debug.Log("Saved " + SceneManager.GetActiveScene().name);
+
         }
     }
 }
