@@ -4,12 +4,19 @@ using UnityEngine;
 
 public class Spikes : MonoBehaviour
 {
+    bool s;
 
     private void OnTriggerStay2D(Collider2D collision)
     {
+
+        if(this.gameObject.CompareTag("Enemy") && collision.gameObject.GetComponent<playerControl>().sPress)
+        {
+            s = true;
+        }
+
         if (collision.CompareTag("Player"))
         {
-            collision.SendMessage("TakeDamage", 1);
+            if(!s) collision.SendMessage("TakeDamage", 1);
         }
     }
 }

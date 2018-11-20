@@ -191,6 +191,8 @@ public class playerControl : MonoBehaviour
 
         //BASIC MOVEMENT END
 
+        
+
         if(disableInput)
         {
             disableInputTimer -= Time.deltaTime;
@@ -232,7 +234,7 @@ public class playerControl : MonoBehaviour
             onIce = true;
         }
 
-        if ((collision.CompareTag("Ground") || collision.CompareTag("Ice") || (collision.CompareTag("Trampoline")) || collision.CompareTag("DisappearingPlatform1") || collision.CompareTag("DisappearingPlatform2") || collision.CompareTag("DisappearingPlatform3") || collision.CompareTag("SaveSpot") || collision.CompareTag("RotatingPlatform")) && sPress)
+        if ((collision.CompareTag("Ground") || collision.CompareTag("Ice") || (collision.CompareTag("Trampoline")) || collision.CompareTag("DisappearingPlatform1") || collision.CompareTag("DisappearingPlatform2") || collision.CompareTag("DisappearingPlatform3") || collision.CompareTag("SaveSpot") || collision.CompareTag("RotatingPlatform") || collision.CompareTag("palm")) && sPress)
         {
             bounce = true;
             sPress = false;

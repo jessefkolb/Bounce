@@ -42,6 +42,7 @@ TagManager:
   - Ice
   - FanLeft
   - FanRight
+  - palm
   layers:
   - Default
   - TransparentFX
@@ -79,6 +80,9 @@ TagManager:
   - name: Background
     uniqueID: 1353818671
     locked: 0
+  - name: backgroundfront
+    uniqueID: 1666592221
+    locked: 0
   - name: Wheels
     uniqueID: 1118368781
     locked: 0
@@ -87,6 +91,9 @@ TagManager:
     locked: 0
   - name: Front
     uniqueID: 3152112843
+    locked: 0
+  - name: Front2
+    uniqueID: 3848947603
     locked: 0
   - name: UI
     uniqueID: 2122309829

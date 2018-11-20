@@ -34,6 +34,7 @@ public class doubleJump : MonoBehaviour {
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, GetComponent<playerControl>().jumpHeight); //Jump
             hasDoubleJumped = true;
             djAnim = true;
+            GetComponent<playerControl>().sPress = false;
         }
 
         if(hasDoubleJumped && t2 > 0)
@@ -46,10 +47,7 @@ public class doubleJump : MonoBehaviour {
             }
         }
 
-        if(GetComponent<playerControl>().sPress)
-        {
-            djAnim = false;
-        }
+
 
     }
 }
