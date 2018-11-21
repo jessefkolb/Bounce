@@ -57,7 +57,7 @@ public class Icicle : MonoBehaviour {
 
         if (fall)
         {
-            GetComponent<Rigidbody2D>().gravityScale = 1;
+            if(GetComponent<BoxCollider2D>() != null) GetComponent<Rigidbody2D>().gravityScale = 1;
         }
 
 

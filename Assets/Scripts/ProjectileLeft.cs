@@ -22,6 +22,13 @@ public class ProjectileLeft : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //Damage Enemy
-        Destroy(this.gameObject);
+
+        if (collision.CompareTag("Enemy") && collision.gameObject.GetComponent<EnemyHealth>() != null)
+        {
+            collision.SendMessage("Die");
+            Destroy(this.gameObject);
+        }
+
+        
     }
 }
