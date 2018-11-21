@@ -43,6 +43,10 @@ TagManager:
   - FanLeft
   - FanRight
   - palm
+  - Special
+  - killMenu
+  - projectile
+  - deadzone
   layers:
   - Default
   - TransparentFX

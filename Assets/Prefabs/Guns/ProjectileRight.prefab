@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 58705375455198152}
   m_Layer: 0
   m_Name: ProjectileRight
-  m_TagString: Untagged
+  m_TagString: projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -89,6 +89,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c053b5bc9209f54485f0840b649065f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  angle: 0
+  usingStick: 0
 --- !u!212 &212237394011799780
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -45,6 +45,11 @@ public class mainMenu : MonoBehaviour {
         else SceneManager.LoadScene("ROOM1");
     }
 
+    public void battleMode()
+    {
+        SceneManager.LoadScene("BattleMode");
+    }
+
     public void levelSelect()
     {
         levelCanvas.SetActive(true);

@@ -27,12 +27,13 @@ public class EnemyHealth : MonoBehaviour {
         }
         if(deathTimer <=0)
         {
-            this.gameObject.SetActive(false);
+            Destroy(this.gameObject);
         }
     }
 
     public void Die()
     {
+        MenuDisplay.UpdateKills();
         dead = true;
     }
 
