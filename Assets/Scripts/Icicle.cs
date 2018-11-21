@@ -11,7 +11,7 @@ public class Icicle : MonoBehaviour {
 
 
     private bool playerNear;
-    private bool fall;
+    public bool fall;
     private bool fade;
     public bool coconut;
 

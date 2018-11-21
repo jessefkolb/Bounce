@@ -11,3 +11,4 @@ Start - 7
 L analog - 9 positive
 R analog - 10 positive
 
+R aim - axis 4 and 5

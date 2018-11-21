@@ -43,5 +43,10 @@ public class EnemyHealth : MonoBehaviour {
             dead = true;
             //collision.gameObject.GetComponent<playerControl>().sPress = false;
         }
+
+        else if(collision.CompareTag("Player") && collision.gameObject.GetComponent<playerControl>().hasDashBomb && collision.GetComponent<airDash>().airDashingCurrently)
+        {
+            dead = true;
+        }
     }
 }

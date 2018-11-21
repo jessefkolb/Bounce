@@ -98,7 +98,11 @@ public class PlayerHealth : MonoBehaviour {
 
         if((collision.CompareTag("Enemy")) && !GetComponent<playerControl>().sPress)
         {
-            TakeDamage(1);
+            if(!GetComponent<playerControl>().hasDashBomb || !GetComponent<airDash>().airDashingCurrently)
+            {
+
+                TakeDamage(1);
+            }
         }
     }
 
