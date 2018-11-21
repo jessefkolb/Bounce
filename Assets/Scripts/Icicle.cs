@@ -13,7 +13,9 @@ public class Icicle : MonoBehaviour {
     private bool playerNear;
     private bool fall;
     private bool fade;
+    public bool coconut;
 
+    private Animator anim;
     private float timer;
 
     // Use this for initialization
@@ -22,6 +24,7 @@ public class Icicle : MonoBehaviour {
         timer = 1;
         angle = 0;
         GetComponent<Rigidbody2D>().gravityScale = 0;
+        if(coconut) anim = GetComponent<Animator>();
 	}
 
     void FixedUpdate()
@@ -34,7 +37,7 @@ public class Icicle : MonoBehaviour {
     {
         if (playerNear) fall = true;
 
-        if (fade)
+        if (fade && !coconut)
         {
             timer -= Time.deltaTime;
             GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, (float)timer);
@@ -46,6 +49,11 @@ public class Icicle : MonoBehaviour {
             }
             
         }
+        else if(fade && coconut)
+        {
+            if(GetComponent<Rigidbody2D>() != null) Destroy(GetComponent<Rigidbody2D>());
+            if(GetComponent<BoxCollider2D>() !=null) Destroy(GetComponent<BoxCollider2D>());
+        }
 
         if (fall)
         {
@@ -55,6 +63,11 @@ public class Icicle : MonoBehaviour {
 
         if(timer <= 0) Destroy(this.gameObject);
 
+
+        if(coconut)
+        {
+            anim.SetBool("fade", fade);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
