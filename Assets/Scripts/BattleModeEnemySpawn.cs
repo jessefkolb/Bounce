@@ -6,6 +6,7 @@ public class BattleModeEnemySpawn : MonoBehaviour {
 
 
     Quaternion r;
+    Quaternion r2;
 
     float vx;
     float vy;
@@ -28,6 +29,7 @@ public class BattleModeEnemySpawn : MonoBehaviour {
         if(leftSpawn) InvokeRepeating("EnemySpawn0", 9f, 9f);
 
         r = transform.rotation;
+        r2 = new Quaternion(0, 180, 0, 1);
 
         vx = transform.position.x;
         vy = (float)(transform.position.y);
@@ -37,7 +39,29 @@ public class BattleModeEnemySpawn : MonoBehaviour {
     void EnemySpawn0()
     {
         increment++;
-        Instantiate(Dog, new Vector3((float)(vx), vy, vz), r);
+        if (middleSpawn)
+        {
+            Instantiate(Dog, new Vector3((float)(vx), vy, vz), r);
+
+        }
+        else if (leftSpawn)
+        {
+            Instantiate(Dog, new Vector3((float)(vx), vy, vz), r);
+
+        }
+        else if (rightSpawn)
+        {
+            Instantiate(Dog, new Vector3((float)(vx), vy, vz), r2);
+
+        } 
+       
+        if (increment == 3)
+        {
+            CancelInvoke("Enemy0");
+            if (rightSpawn) InvokeRepeating("EnemySpawn0", 6f, 5f);
+            if (middleSpawn) InvokeRepeating("EnemySpawn0", 3f, 5f);
+            if (leftSpawn) InvokeRepeating("EnemySpawn0", 9f, 5f);
+        }
     }
 
 }

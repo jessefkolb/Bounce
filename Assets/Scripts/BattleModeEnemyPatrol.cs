@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BattleModeEnemyPatrol : MonoBehaviour {
 
+    public GameObject chute;
+
     public float speed;
     private bool right = true;
     public Transform detection;
@@ -11,40 +13,44 @@ public class BattleModeEnemyPatrol : MonoBehaviour {
     public RaycastHit2D platformDetect;
     public RaycastHit2D objectDetect;
 
-    float timer;
-    bool collideSpecial;
+    public bool collideSpecial;
+    public bool dead;
 
     public bool collideGround;
     private Animator anim;
 
+
+    public bool walkOff;
+
     public float v;
+    int random;
 
     private void Start()
     {
+        chute.SetActive(true);
         anim = GetComponent<Animator>();
-        timer = (float)0.1;
     }
 
     void Update()
     {
-
+        
         v = GetComponent<Rigidbody2D>().velocity.y;
-        Debug.Log(v);
 
         anim.SetBool("begin", collideSpecial);
-        if(collideSpecial)
+        
+        if (collideSpecial)
         {
-            timer -= Time.deltaTime;
-            this.gameObject.GetComponent<PolygonCollider2D>().enabled = false;
-            if (timer <= 0)
-            {
-                this.gameObject.GetComponent<PolygonCollider2D>().enabled = true;
-                collideSpecial = false;
-            }
+           chute.SetActive(false);
+           this.gameObject.GetComponent<PolygonCollider2D>().enabled = false; 
+        }
+        else
+        {
+            GetComponent<Rigidbody2D>().gravityScale = (float)0.5;
         }
 
-        if(collideGround)
+        if(collideGround || walkOff)
         {
+            this.gameObject.GetComponent<PolygonCollider2D>().enabled = true;
             transform.Translate(Vector2.right * speed * Time.deltaTime);
 
             platformDetect = Physics2D.Raycast(detection.position, Vector2.down, 2);
@@ -72,11 +78,30 @@ public class BattleModeEnemyPatrol : MonoBehaviour {
     {
         if(collision.gameObject.CompareTag("Special"))
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, v);
-            Debug.Log("JUST HIT " + v);
+            GetComponent<Rigidbody2D>().velocity = new Vector2(0, v);
             collideSpecial = true;
-            
         }
-        if (collision.gameObject.CompareTag("Ground")) collideGround = true;
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Ground"))
+        {
+            collideGround = true;
+        }
+
+        if(collision.CompareTag("Special"))
+        {
+            collideSpecial = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Special"))
+        {
+            collideSpecial = false;
+        }
+    }
+
 }

@@ -8,11 +8,13 @@ public class BattleModeEnemyHealth : MonoBehaviour {
     public bool monkey;
     public float deathTimer;
     public float updateKill;
+    private Animator anim;
 
     private void Start()
     {
         updateKill = 0;
         deathTimer = 1;
+        anim = GetComponent<Animator>();
     }
 
     private void Update()
@@ -28,8 +30,13 @@ public class BattleModeEnemyHealth : MonoBehaviour {
             if (monkey) GetComponent<Monkey>().enabled = false;
             transform.eulerAngles = new Vector3(-180, 0, 0);
             GetComponent<Transform>().position = new Vector3(GetComponent<Transform>().position.x, (float)(GetComponent<Transform>().position.y - 0.05), GetComponent<Transform>().position.z);
-            GetComponent<SpriteRenderer>().color = new Color((float)0.5, 0, 0, deathTimer);
+            GetComponent<Rigidbody2D>().velocity = new Vector2(0, 1);
+            GetComponent<SpriteRenderer>().color = new Color((float)0, 0, 0, deathTimer);
             GetComponent<BoxCollider2D>().enabled = false;
+            GetComponent<PolygonCollider2D>().enabled = false;
+            GetComponent<BattleModeEnemyPatrol>().enabled = false;
+            GetComponent<BattleModeEnemyPatrol>().chute.SetActive(false);
+            anim.SetBool("dead", true);
             deathTimer -= Time.deltaTime;
 
         }
