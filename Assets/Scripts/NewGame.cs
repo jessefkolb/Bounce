@@ -8,16 +8,19 @@ public class NewGame : MonoBehaviour {
 
     public GameObject mainCanvas;
     public GameObject AreYouSure;
+    public GameObject Success;
 
     public void yes()
     {
         ES3.DeleteDirectory("");
-        SceneManager.LoadScene("ROOM1");
+        AreYouSure.SetActive(false);
+        Success.SetActive(true);
     }
 
     public void no()
     {
         AreYouSure.SetActive(false);
+        Success.SetActive(false);
         mainCanvas.SetActive(true);
     }
 }

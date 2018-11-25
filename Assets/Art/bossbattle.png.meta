@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: fa981860e6f6990448a24d7e451cecaf
+guid: 12cf5903627ad69499447f27a4b08f07
 TextureImporter:
   fileIDToRecycleName:
-    21300000: boss_0
-    21300002: boss_1
-    21300004: boss_2
+    21300000: bossbattle_0
+    21300002: bossbattle_1
+    21300004: bossbattle_2
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -87,7 +87,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: boss_0
+      name: bossbattle_0
       rect:
         serializedVersion: 2
         x: 0
@@ -101,13 +101,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: edc5636c21f0a1647883eed03e95bfe3
+      spriteID: e81da2998d5a17b4bb27bb28a22d9634
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: boss_1
+      name: bossbattle_1
       rect:
         serializedVersion: 2
         x: 16
@@ -121,13 +121,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fdb5cd61b0d91e2488a4d66fb8496e30
+      spriteID: 96d5110b46aeab141941107214d98988
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: boss_2
+      name: bossbattle_2
       rect:
         serializedVersion: 2
         x: 0
@@ -141,7 +141,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2e5bd40819e996348becb412ca546a42
+      spriteID: f8b32e068604f2d4d9d35806f6595cfa
       vertices: []
       indices: 
       edges: []
@@ -149,7 +149,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 366e6bafb73cd41408d0d9e0f7f4c6c1
+    spriteID: ea5284625930e6745bff200dc9e606af
     vertices: []
     indices: 
     edges: []
