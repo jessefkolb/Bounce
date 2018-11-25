@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
+using System.IO;
 
 public class NewGame : MonoBehaviour {
 
@@ -12,9 +14,9 @@ public class NewGame : MonoBehaviour {
 
     public void yes()
     {
-        ES3.DeleteDirectory("");
         AreYouSure.SetActive(false);
         Success.SetActive(true);
+        ES3.DeleteDirectory("");
     }
 
     public void no()
