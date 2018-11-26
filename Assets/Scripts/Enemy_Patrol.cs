@@ -41,7 +41,7 @@ public class Enemy_Patrol: MonoBehaviour {
 
             RaycastHit2D platformDetect = Physics2D.Raycast(detection.position, Vector2.down, 2);
             RaycastHit2D objectDetect = Physics2D.Raycast(detection.position, Vector2.right, .1f);
-            if (platformDetect.collider == false || objectDetect.collider == true)
+            if (platformDetect.collider == false || objectDetect.collider == true && objectDetect.transform.tag != "Player")
             {
                 if(right == true)
                 {

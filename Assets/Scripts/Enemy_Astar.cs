@@ -6,7 +6,7 @@ public class Enemy_Astar : MonoBehaviour
 
 
     public Transform target;
-    float speed = 5;
+    public float speed = 5;
     Vector3[] path;
     int targetIndex;
 
