@@ -10,6 +10,11 @@ public class door : MonoBehaviour
     public GameObject Player;
     public GameObject Canvas;
 
+    private void Start()
+    {
+        Canvas.SetActive(false);
+    }
+
     private void OnTriggerStay2D(Collider2D collision)
     {
 
@@ -40,7 +45,7 @@ public class door : MonoBehaviour
                 }
                 else if (SceneManager.GetActiveScene().name == "ROOM4")
                 {
-                    if (Player.GetComponent<PlayerKeys>().numOfKeys >= 13) SceneManager.LoadScene("ROOM5");
+                    if (Player.GetComponent<PlayerKeys>().numOfKeys >= 12) SceneManager.LoadScene("ROOM5");
                 }
                 else if (SceneManager.GetActiveScene().name == "ROOM5")
                 {
@@ -60,7 +65,12 @@ public class door : MonoBehaviour
                 }
                 else if (SceneManager.GetActiveScene().name == "ROOM9")
                 {
-                    if (Player.GetComponent<PlayerKeys>().numOfKeys >= 32) SceneManager.LoadScene("ROOM10");
+                    if (Player.GetComponent<PlayerKeys>().numOfKeys >= 32)
+                    {
+                        Debug.Log("Entered");
+                        SceneManager.LoadScene("ROOM10");
+                    }
+                    
                 }
                 else if (SceneManager.GetActiveScene().name == "ROOM10")
                 {
