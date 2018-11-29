@@ -8,6 +8,48 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: 240af03330279429b998cbf808389f39
+  - enabled: 1
+    path: Assets/Scenes/ROOM1.unity
+    guid: 1e9140a92ca244e219cbed7a77d8cf69
+  - enabled: 1
+    path: Assets/Scenes/ROOM2.unity
+    guid: d4773a41ddba5ff4dab8889842f1087d
+  - enabled: 1
+    path: Assets/Scenes/ROOM3.unity
+    guid: 442e295bb41ac2c469b2c00cacf996a3
+  - enabled: 1
+    path: Assets/Scenes/ROOM4.unity
+    guid: b7e7bc7997d2f1b4ca1078746b26f4ca
+  - enabled: 1
+    path: Assets/Scenes/ROOM5.unity
+    guid: 7cc898640e6efd649bb315858cf1a6dc
+  - enabled: 1
+    path: Assets/Scenes/ROOM6.unity
+    guid: 3e031408e2b607b44be81bbffb8e0f0b
+  - enabled: 1
+    path: Assets/Scenes/ROOM7.unity
+    guid: 34df574ed9ab5544281e27002a8f7194
+  - enabled: 1
+    path: Assets/Scenes/ROOM8.unity
+    guid: 8b5789eb9092072449dcba44a746cc78
+  - enabled: 1
+    path: Assets/Scenes/ROOM9.unity
+    guid: de61f1e08d2e9b140b989eef0b69b2cc
+  - enabled: 1
+    path: Assets/Scenes/ROOM10.unity
+    guid: b0470c9fb8337bd4caf4e63ee77f6698
+  - enabled: 1
+    path: Assets/Scenes/ROOM11.unity
+    guid: 8dd02732f300c66498de8f9257a7b18b
+  - enabled: 1
+    path: Assets/Scenes/ROOM12.unity
+    guid: 60b24a568b749914fbe5c9b0b4ee97fb
+  - enabled: 1
+    path: Assets/Scenes/THEEND.unity
+    guid: 07b2d1cd19bb07144b17b8f8c2923947
+  - enabled: 1
+    path: Assets/Scenes/BattleMode.unity
+    guid: ba7deeb99d523a84ea7fdb733e69053c
   - enabled: 0
     path: Assets/Scenes/Demo1.unity
     guid: 9321bbc2ae50ed242b954a21e71fde89
@@ -23,31 +65,4 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Scene2.unity
     guid: 8634a1d59758a3143b69e42eeb3ee70d
-  - enabled: 1
-    path: Assets/Scenes/ROOM3.unity
-    guid: 442e295bb41ac2c469b2c00cacf996a3
-  - enabled: 1
-    path: Assets/Scenes/ROOM2.unity
-    guid: d4773a41ddba5ff4dab8889842f1087d
-  - enabled: 1
-    path: Assets/Scenes/ROOM1.unity
-    guid: 1e9140a92ca244e219cbed7a77d8cf69
-  - enabled: 1
-    path: Assets/Scenes/ROOM4.unity
-    guid: b7e7bc7997d2f1b4ca1078746b26f4ca
-  - enabled: 1
-    path: Assets/Scenes/ROOM12.unity
-    guid: 60b24a568b749914fbe5c9b0b4ee97fb
-  - enabled: 1
-    path: Assets/Scenes/THEEND.unity
-    guid: 07b2d1cd19bb07144b17b8f8c2923947
-  - enabled: 1
-    path: Assets/Scenes/BattleMode.unity
-    guid: ba7deeb99d523a84ea7fdb733e69053c
-  - enabled: 1
-    path: Assets/Scenes/ROOM9.unity
-    guid: de61f1e08d2e9b140b989eef0b69b2cc
-  - enabled: 1
-    path: Assets/Scenes/ROOM10.unity
-    guid: b0470c9fb8337bd4caf4e63ee77f6698
   m_configObjects: {}
